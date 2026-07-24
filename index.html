@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juliana Callegaris | Beauty Studio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-base: #fdfbf7;
+            --card-bg: #ffffff;
+            --primary-gold: #c5a059;
+            --dark-gold: #a37f3a;
+            --light-gold: #f4ece1;
+            --text-dark: #2c2a29;
+            --text-muted: #6e6b68;
+            --border-color: #eee3d5;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            background-image: radial-gradient(#e5d9cc 0.75px, transparent 0.75px);
+            background-size: 24px 24px;
+        }
+
+        /* Header e Navegação */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .brand-logo span {
+            color: var(--primary-gold);
+            font-style: italic;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Seletor de Idioma */
+        .lang-switch {
+            display: flex;
+            background: var(--light-gold);
+            padding: 4px;
+            border-radius: 20px;
+            gap: 2px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 14px;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary-gold);
+            color: #fff;
+        }
+
+        /* Containers e Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--primary-gold);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary-gold);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: background 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .service-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-price {
+            color: var(--primary-gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Formulário de Agendamento */
+        .booking-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: var(--font-body);
+            background: var(--bg-base);
+        }
+
+        /* Rodapé / Contatos */
+        footer {
+            background: #f4ece1;
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .contacts-list {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            list-style: none;
+        }
+
+        .contacts-list a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contacts-list a:hover {
+            color: var(--primary-gold);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="brand-logo">Beauty by <span>Ju Callega</span></a>
+        <nav>
+            <a href="#about" data-i18n="nav_about">Sobre</a>
+            <a href="#services" data-i18n="nav_services">Serviços</a>
+            <a href="#booking" data-i18n="nav_booking">Agendar</a>
+            <a href="#contact" data-i18n="nav_contact">Contato</a>
+        </nav>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLanguage('pt')">PT</button>
+            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" onclick="setLanguage('es')">ES</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 data-i18n="hero_title">Elegância e Realce para sua Beleza Natural</h1>
+        <p data-i18n="hero_sub">Atendimento exclusivo com técnicas modernas em alongamento de unhas e estética.</p>
+        <a href="#booking" class="btn-primary" data-i18n="btn_book">Agendar Horário</a>
+    </section>
+
+    <section id="services" class="container">
+        <div class="section-subtitle" data-i18n="sub_services">Catálogo & Preços</div>
+        <h2 class="section-title" data-i18n="title_services">Nossos Serviços</h2>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-title">Gel Extensions (Baby Boomer)</div>
+                <div class="service-price">$80.00</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="srv_1_desc">Técnica elegante com acabamento natural e duradouro.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-title">Chrome Powder Effect</div>
+                <div class="service-price">$65.00</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="srv_2_desc">Efeito espelhado moderno e sofisticado para suas unhas.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-title">Manicure Russa & Esmaltação</div>
+                <div class="service-price">$50.00</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="srv_3_desc">Cutilagem de alta precisão e acabamento impecável.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="container">
+        <div class="booking-box">
+            <h2 class="section-title" style="font-size: 2rem;" data-i18n="title_booking">Solicitar Agendamento</h2>
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label data-i18n="lbl_name">Nome Completo</label>
+                    <input type="text" required placeholder="Seu nome">
+                </div>
+                <div class="form-group">
+                    <label data-i18n="lbl_phone">WhatsApp / Telefone</label>
+                    <input type="tel" required placeholder="+1 (000) 000-0000">
+                </div>
+                <div class="form-group">
+                    <label data-i18n="lbl_service">Serviço Desejado</label>
+                    <select required>
+                        <option value="">Selecione...</option>
+                        <option>Gel Extensions (Baby Boomer)</option>
+                        <option>Chrome Powder Effect</option>
+                        <option>Manicure Russa</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;" data-i18n="btn_submit">Confirmar Solicitação</button>
+            </form>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p style="font-family: var(--font-heading); font-size: 1.3rem;">Juliana Callegaris Beauty Studio</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Apopka / Region of Orlando, FL</p>
+        
+        <ul class="contacts-list">
+            <li><a href="https://wa.me/19546956445" target="_blank">WhatsApp: +1 (954) 695-6445</a></li>
+            <li><a href="https://www.instagram.com/beautybyjucallega" target="_blank">Instagram: @beautybyjucallega</a></li>
+            <li><a href="https://facebook.com/p/Juliana-Callegaris-Beauty-Studio-61579021635137/" target="_blank">Facebook Studio</a></li>
+            <li><a>E-mail: [PENDENTE]</a></li>
+        </ul>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2rem;">&copy; 2026 Juliana Callegaris. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            pt: {
+                nav_about: "Sobre",
+                nav_services: "Serviços",
+                nav_booking: "Agendar",
+                nav_contact: "Contato",
+                hero_title: "Elegância e Realce para sua Beleza Natural",
+                hero_sub: "Atendimento exclusivo com técnicas modernas em alongamento de unhas e estética.",
+                btn_book: "Agendar Horário",
+                sub_services: "Catálogo & Preços",
+                title_services: "Nossos Serviços",
+                srv_1_desc: "Técnica elegante com acabamento natural e duradouro.",
+                srv_2_desc: "Efeito espelhado moderno e sofisticado para suas unhas.",
+                srv_3_desc: "Cutilagem de alta precisão e acabamento impecável.",
+                title_booking: "Solicitar Agendamento",
+                lbl_name: "Nome Completo",
+                lbl_phone: "WhatsApp / Telefone",
+                lbl_service: "Serviço Desejado",
+                btn_submit: "Confirmar Solicitação"
+            },
+            en: {
+                nav_about: "About",
+                nav_services: "Services",
+                nav_booking: "Book Now",
+                nav_contact: "Contact",
+                hero_title: "Elegance and Highlight for Your Natural Beauty",
+                hero_sub: "Exclusive care with modern nail extension and aesthetic techniques.",
+                btn_book: "Book Appointment",
+                sub_services: "Catalog & Pricing",
+                title_services: "Our Services",
+                srv_1_desc: "Elegant technique with a natural and long-lasting finish.",
+                srv_2_desc: "Modern and sophisticated chrome effect for your nails.",
+                srv_3_desc: "High precision Russian manicure with flawless finish.",
+                title_booking: "Request Appointment",
+                lbl_name: "Full Name",
+                lbl_phone: "WhatsApp / Phone",
+                lbl_service: "Desired Service",
+                btn_submit: "Confirm Request"
+            },
+            es: {
+                nav_about: "Sobre mí",
+                nav_services: "Servicios",
+                nav_booking: "Reservar",
+                nav_contact: "Contacto",
+                hero_title: "Elegancia y Realce para tu Belleza Natural",
+                hero_sub: "Atención exclusiva con técnicas modernas en uñas y estética.",
+                btn_book: "Reservar Cita",
+                sub_services: "Catálogo y Precios",
+                title_services: "Nuestros Servicios",
+                srv_1_desc: "Técnica elegante con acabado natural y duradero.",
+                srv_2_desc: "Efecto espejo moderno y sofisticado para tus uñas.",
+                srv_3_desc: "Manicura rusa de alta precisión con acabado impecable.",
+                title_booking: "Solicitar Cita",
+                lbl_name: "Nombre Completo",
+                lbl_phone: "WhatsApp / Teléfono",
+                lbl_service: "Servicio Deseado",
+                btn_submit: "Confirmar Solicitud"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase() === lang) btn.classList.add('active');
+            });
+
+            document.querySelectorAll('[data-i18n]').forEach(elem => {
+                const key = elem.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    elem.innerText = translations[lang][key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>
