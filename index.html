@@ -1,436 +1,924 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juliana Callegaris | Beauty Studio</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-base: #fdfbf7;
-            --card-bg: #ffffff;
-            --primary-gold: #c5a059;
-            --dark-gold: #a37f3a;
-            --light-gold: #f4ece1;
-            --text-dark: #2c2a29;
-            --text-muted: #6e6b68;
-            --border-color: #eee3d5;
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Plus Jakarta Sans', sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juliana Callegaris Beauty Studio</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    body {
+      background: #faf8f5;
+      font-family: 'Inter', sans-serif;
+      color: #2d2a26;
+      line-height: 1.6;
+    }
 
-        body {
-            background-color: var(--bg-base);
-            color: var(--text-dark);
-            font-family: var(--font-body);
-            line-height: 1.6;
-            background-image: radial-gradient(#e5d9cc 0.75px, transparent 0.75px);
-            background-size: 24px 24px;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-        /* Header e Navegação */
-        header {
-            position: sticky;
-            top: 0;
-            background-color: rgba(253, 251, 247, 0.95);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    /* --- LANGUAGE SWITCHER (fixed) --- */
+    .lang-switcher {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      z-index: 1000;
+      display: flex;
+      gap: 6px;
+      background: rgba(255, 252, 248, 0.85);
+      backdrop-filter: blur(8px);
+      padding: 8px 14px;
+      border-radius: 40px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(176, 141, 87, 0.2);
+    }
 
-        .brand-logo {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 24px;
+      cursor: pointer;
+      color: #7a6e64;
+      transition: 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
 
-        .brand-logo span {
-            color: var(--primary-gold);
-            font-style: italic;
-        }
+    .lang-btn:hover {
+      background: rgba(176, 141, 87, 0.08);
+      color: #2d2a26;
+    }
 
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
+    .lang-btn.active {
+      background: #b08d57;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(176, 141, 87, 0.3);
+    }
 
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+    /* --- HEADER / NAV --- */
+    header {
+      padding: 20px 0 12px 0;
+      border-bottom: 1px solid rgba(176, 141, 87, 0.15);
+      background: rgba(255, 252, 248, 0.7);
+      backdrop-filter: blur(4px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-        nav a:hover {
-            color: var(--primary-gold);
-        }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        /* Seletor de Idioma */
-        .lang-switch {
-            display: flex;
-            background: var(--light-gold);
-            padding: 4px;
-            border-radius: 20px;
-            gap: 2px;
-            border: 1px solid var(--border-color);
-        }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .lang-btn {
-            background: none;
-            border: none;
-            padding: 4px 10px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border-radius: 14px;
-            cursor: pointer;
-            color: var(--text-muted);
-            transition: all 0.3s;
-        }
+    .logo-svg {
+      height: 44px;
+      width: auto;
+    }
 
-        .lang-btn.active {
-            background: var(--primary-gold);
-            color: #fff;
-        }
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: 0.5px;
+      color: #2d2a26;
+    }
 
-        /* Containers e Layout */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
+    .logo-text span {
+      color: #b08d57;
+    }
 
-        .section-title {
-            text-align: center;
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
+    nav {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 500;
+    }
 
-        .section-subtitle {
-            text-align: center;
-            color: var(--primary-gold);
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 3rem;
-            font-weight: 600;
-        }
+    nav a {
+      text-decoration: none;
+      color: #4a443e;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 6rem 2rem 4rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    nav a:hover {
+      color: #b08d57;
+      border-bottom-color: #b08d57;
+    }
 
-        .hero h1 {
-            font-family: var(--font-heading);
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-        }
+    .nav-cta {
+      background: #b08d57;
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 40px;
+      border-bottom: none !important;
+      font-weight: 600;
+      transition: 0.2s;
+    }
 
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-        }
+    .nav-cta:hover {
+      background: #9d7a47;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(176, 141, 87, 0.3);
+    }
 
-        .btn-primary {
-            display: inline-block;
-            background: var(--primary-gold);
-            color: #fff;
-            padding: 1rem 2.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: background 0.3s, transform 0.2s;
-            border: none;
-            cursor: pointer;
-        }
+    /* --- HERO --- */
+    .hero {
+      padding: 60px 0 80px 0;
+      background: linear-gradient(135deg, #f7f1e9 0%, #efe8dd 100%);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .btn-primary:hover {
-            background: var(--dark-gold);
-            transform: translateY(-2px);
-        }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(176, 141, 87, 0.04) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
 
-        /* Serviços */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
 
-        .service-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-            transition: transform 0.3s;
-        }
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: #1f1c18;
+    }
 
-        .service-card:hover {
-            transform: translateY(-4px);
-        }
+    .hero-content h1 span {
+      color: #b08d57;
+      font-style: italic;
+    }
 
-        .service-title {
-            font-family: var(--font-heading);
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
+    .hero-content p {
+      font-size: 18px;
+      color: #5a524a;
+      max-width: 460px;
+      margin-bottom: 32px;
+    }
 
-        .service-price {
-            color: var(--primary-gold);
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
 
-        /* Formulário de Agendamento */
-        .booking-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 3rem;
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-        }
+    .btn-primary {
+      background: #b08d57;
+      color: #fff;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.25s;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
+    .btn-primary:hover {
+      background: #9d7a47;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(176, 141, 87, 0.25);
+    }
 
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
+    .btn-secondary {
+      background: transparent;
+      color: #2d2a26;
+      border: 1.5px solid #b08d57;
+      padding: 14px 36px;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.25s;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-family: var(--font-body);
-            background: var(--bg-base);
-        }
+    .btn-secondary:hover {
+      background: #b08d57;
+      color: #fff;
+      transform: translateY(-3px);
+    }
 
-        /* Rodapé / Contatos */
-        footer {
-            background: #f4ece1;
-            border-top: 1px solid var(--border-color);
-            padding: 4rem 2rem 2rem;
-            margin-top: 4rem;
-            text-align: center;
-        }
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .contacts-list {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin: 2rem 0;
-            list-style: none;
-        }
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+      border: 4px solid rgba(176, 141, 87, 0.15);
+    }
 
-        .contacts-list a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-        }
+    /* --- SECTION COMMON --- */
+    section {
+      padding: 72px 0;
+    }
 
-        .contacts-list a:hover {
-            color: var(--primary-gold);
-        }
-    </style>
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #1f1c18;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: #7a6e64;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    .section-title span {
+      color: #b08d57;
+    }
+
+    .divider-line {
+      width: 60px;
+      height: 3px;
+      background: #b08d57;
+      margin: 16px 0 24px 0;
+      border-radius: 4px;
+    }
+
+    /* --- ABOUT --- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .about-text blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: #b08d57;
+      margin: 24px 0;
+      padding-left: 24px;
+      border-left: 3px solid #b08d57;
+    }
+
+    .about-text p {
+      color: #4a443e;
+      margin-bottom: 16px;
+    }
+
+    /* --- SERVICES --- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(176, 141, 87, 0.10);
+      transition: 0.25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.05);
+      border-color: rgba(176, 141, 87, 0.25);
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      margin-bottom: 6px;
+      color: #1f1c18;
+    }
+
+    .service-card .price {
+      font-weight: 600;
+      color: #b08d57;
+      font-size: 18px;
+      margin: 8px 0 12px 0;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: #6a625a;
+      margin-bottom: 6px;
+    }
+
+    .service-card .duration {
+      font-size: 13px;
+      color: #9a8e82;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    /* --- GALLERY --- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 2px solid rgba(176, 141, 87, 0.08);
+      transition: 0.25s;
+      cursor: pointer;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.02);
+      border-color: #b08d57;
+      box-shadow: 0 8px 24px rgba(176, 141, 87, 0.12);
+    }
+
+    /* --- TESTIMONIALS --- */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      padding: 28px 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(176, 141, 87, 0.08);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+    }
+
+    .testimonial-card .stars {
+      color: #b08d57;
+      font-size: 18px;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .testimonial-card p {
+      font-size: 15px;
+      color: #3a3632;
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-card .author {
+      font-weight: 600;
+      color: #1f1c18;
+      font-size: 14px;
+    }
+
+    .testimonial-card .role {
+      font-size: 13px;
+      color: #9a8e82;
+    }
+
+    /* --- POLICY --- */
+    .policy-box {
+      background: #fff;
+      border-radius: 24px;
+      padding: 40px 48px;
+      border: 1px solid rgba(176, 141, 87, 0.10);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .policy-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: #1f1c18;
+    }
+
+    .policy-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .policy-box ul li {
+      padding-left: 28px;
+      position: relative;
+      color: #4a443e;
+    }
+
+    .policy-box ul li::before {
+      content: '✦';
+      color: #b08d57;
+      position: absolute;
+      left: 0;
+      font-size: 14px;
+    }
+
+    .policy-box .highlight {
+      background: rgba(176, 141, 87, 0.06);
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+      border-left: 3px solid #b08d57;
+      font-size: 14px;
+      color: #5a524a;
+    }
+
+    /* --- CONTACT --- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 16px;
+    }
+
+    .contact-item .icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(176, 141, 87, 0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #b08d57;
+    }
+
+    .contact-item a {
+      color: #2d2a26;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    .contact-item a:hover {
+      color: #b08d57;
+    }
+
+    .contact-item .label {
+      font-size: 13px;
+      color: #9a8e82;
+      font-weight: 400;
+    }
+
+    .contact-socials {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .contact-socials a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 60px;
+      border: 1px solid rgba(176, 141, 87, 0.12);
+      text-decoration: none;
+      color: #2d2a26;
+      font-weight: 500;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .contact-socials a:hover {
+      background: #b08d57;
+      color: #fff;
+      border-color: #b08d57;
+      transform: translateY(-2px);
+    }
+
+    .contact-form placeholder {
+      color: #aaa;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background: #1f1c18;
+      color: #d4cec6;
+      padding: 32px 0;
+      margin-top: 40px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .footer-inner a {
+      color: #d4cec6;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .footer-inner a:hover {
+      color: #b08d57;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-content p {
+        margin: 0 auto 32px auto;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .lang-switcher {
+        top: 12px;
+        right: 12px;
+        padding: 6px 10px;
+        gap: 4px;
+      }
+      .lang-btn {
+        font-size: 12px;
+        padding: 2px 10px;
+      }
+      nav {
+        gap: 14px;
+        font-size: 13px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .hero-content h1 {
+        font-size: 32px;
+      }
+      .section-title {
+        font-size: 28px;
+      }
+      .policy-box {
+        padding: 24px 20px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-socials {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <a href="#" class="brand-logo">Beauty by <span>Ju Callega</span></a>
-        <nav>
-            <a href="#about" data-i18n="nav_about">Sobre</a>
-            <a href="#services" data-i18n="nav_services">Serviços</a>
-            <a href="#booking" data-i18n="nav_booking">Agendar</a>
-            <a href="#contact" data-i18n="nav_contact">Contato</a>
-        </nav>
-        <div class="lang-switch">
-            <button class="lang-btn active" onclick="setLanguage('pt')">PT</button>
-            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
-            <button class="lang-btn" onclick="setLanguage('es')">ES</button>
+  <!-- LANGUAGE SWITCHER -->
+  <div class="lang-switcher" id="langSwitcher">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="pt">PT</button>
+    <button class="lang-btn" data-lang="es">ES</button>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo-area">
+        <!-- SVG Logo – stylized "J" -->
+        <svg class="logo-svg" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 10 L20 50 L50 50 L50 10 L20 10Z" fill="#B08D57" opacity="0.12"/>
+          <path d="M28 14 L28 46 L46 46 L46 14 L28 14Z" fill="#B08D57" opacity="0.20"/>
+          <text x="16" y="42" font-family="'Playfair Display', serif" font-size="36" font-weight="600" fill="#2D2A26">J</text>
+          <text x="54" y="42" font-family="'Playfair Display', serif" font-size="18" font-weight="400" fill="#B08D57">✦</text>
+        </svg>
+        <span class="logo-text">Juliana <span>Callegaris</span></span>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact" class="nav-cta">Book Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1>Beauty that <span>speaks</span> for itself</h1>
+        <p>Nail artistry, lash & brow design, and premium beauty services in Apopka, FL. Where detail meets elegance.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Book your appointment</a>
+          <a href="#services" class="btn-secondary">Explore services</a>
         </div>
-    </header>
+      </div>
+      <div class="hero-image">
+        <!-- placeholder hero image – extraída do panfleto -->
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f7f1e9'/%3E%3Ccircle cx='200' cy='200' r='120' fill='%23b08d57' opacity='0.06'/%3E%3Ccircle cx='200' cy='200' r='80' fill='%23b08d57' opacity='0.08'/%3E%3Ctext x='140' y='220' font-family='Playfair Display, serif' font-size='42' fill='%23b08d57'%3E✦%3C/text%3E%3Ctext x='170' y='280' font-family='Inter, sans-serif' font-size='18' fill='%235a524a'%3EBeauty Studio%3C/text%3E%3C/svg%3E"
+             alt="Juliana Callegaris Beauty Studio" />
+      </div>
+    </div>
+  </section>
 
-    <section class="hero">
-        <h1 data-i18n="hero_title">Elegância e Realce para sua Beleza Natural</h1>
-        <p data-i18n="hero_sub">Atendimento exclusivo com técnicas modernas em alongamento de unhas e estética.</p>
-        <a href="#booking" class="btn-primary" data-i18n="btn_book">Agendar Horário</a>
-    </section>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-image">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23f7f1e9'/%3E%3Crect x='40' y='40' width='420' height='420' rx='24' fill='%23efe8dd'/%3E%3Ccircle cx='250' cy='200' r='80' fill='%23b08d57' opacity='0.08'/%3E%3Ctext x='190' y='260' font-family='Playfair Display, serif' font-size='60' fill='%23b08d57'%3EJ%3C/text%3E%3Ctext x='210' y='330' font-family='Inter, sans-serif' font-size='18' fill='%235a524a'%3EJuliana Callegaris%3C/text%3E%3C/svg%3E"
+             alt="Juliana Callegaris" />
+      </div>
+      <div class="about-text">
+        <h2 class="section-title">About <span>Juliana</span></h2>
+        <div class="divider-line"></div>
+        <p>With over 8 years of experience in the beauty industry, Juliana Callegaris brings the precision of Brazilian techniques to Florida. Specializing in nail architecture, lash lifting, and brow design, she creates tailored looks that enhance natural beauty.</p>
+        <blockquote>
+          “Beauty is in the details — I treat every client like a canvas, and my goal is to make you feel confident and radiant.”
+        </blockquote>
+        <p>Certified in multiple advanced techniques, Juliana stays ahead of trends to deliver flawless, long-lasting results.</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="services" class="container">
-        <div class="section-subtitle" data-i18n="sub_services">Catálogo & Preços</div>
-        <h2 class="section-title" data-i18n="title_services">Nossos Serviços</h2>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-title">Gel Extensions (Baby Boomer)</div>
-                <div class="service-price">$80.00</div>
-                <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="srv_1_desc">Técnica elegante com acabamento natural e duradouro.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-title">Chrome Powder Effect</div>
-                <div class="service-price">$65.00</div>
-                <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="srv_2_desc">Efeito espelhado moderno e sofisticado para suas unhas.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-title">Manicure Russa & Esmaltação</div>
-                <div class="service-price">$50.00</div>
-                <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="srv_3_desc">Cutilagem de alta precisão e acabamento impecável.</p>
-            </div>
+  <!-- SERVICES -->
+  <section id="services" style="background: #faf8f5;">
+    <div class="container">
+      <h2 class="section-title">Our <span>Services</span></h2>
+      <p class="section-sub">From nails to brows — each service is crafted with care, precision, and premium products.</p>
+      <div class="services-grid">
+        <!-- service 1 -->
+        <div class="service-card">
+          <h3>Gel Nails</h3>
+          <div class="price">$45 – $85</div>
+          <p>Gel manicure, builder gel, hard gel, and gel extensions.</p>
+          <div class="duration">⏱ 1h – 2h</div>
         </div>
-    </section>
-
-    <section id="booking" class="container">
-        <div class="booking-box">
-            <h2 class="section-title" style="font-size: 2rem;" data-i18n="title_booking">Solicitar Agendamento</h2>
-            <form id="appointmentForm">
-                <div class="form-group">
-                    <label data-i18n="lbl_name">Nome Completo</label>
-                    <input type="text" required placeholder="Seu nome">
-                </div>
-                <div class="form-group">
-                    <label data-i18n="lbl_phone">WhatsApp / Telefone</label>
-                    <input type="tel" required placeholder="+1 (000) 000-0000">
-                </div>
-                <div class="form-group">
-                    <label data-i18n="lbl_service">Serviço Desejado</label>
-                    <select required>
-                        <option value="">Selecione...</option>
-                        <option>Gel Extensions (Baby Boomer)</option>
-                        <option>Chrome Powder Effect</option>
-                        <option>Manicure Russa</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-primary" style="width: 100%;" data-i18n="btn_submit">Confirmar Solicitação</button>
-            </form>
+        <!-- service 2 -->
+        <div class="service-card">
+          <h3>Manicure & Pedicure</h3>
+          <div class="price">$35 – $70</div>
+          <p>Classic, spa, and deluxe manicure/pedicure with paraffin.</p>
+          <div class="duration">⏱ 1h – 1h30</div>
         </div>
-    </section>
+        <!-- service 3 -->
+        <div class="service-card">
+          <h3>Lash & Brow</h3>
+          <div class="price">$40 – $120</div>
+          <p>Lash lifting, brow lamination, tinting, and shaping.</p>
+          <div class="duration">⏱ 45min – 1h30</div>
+        </div>
+        <!-- service 4 -->
+        <div class="service-card">
+          <h3>Waxing & Henna</h3>
+          <div class="price">$20 – $60</div>
+          <p>Brow waxing, henna brows, and facial hair removal.</p>
+          <div class="duration">⏱ 20min – 50min</div>
+        </div>
+        <!-- service 5 -->
+        <div class="service-card">
+          <h3>Micropigmentation</h3>
+          <div class="price">$150 – $400</div>
+          <p>Permanent makeup: brows, eyeliner, and lips.</p>
+          <div class="duration">⏱ 2h – 3h</div>
+        </div>
+        <!-- service 6 -->
+        <div class="service-card">
+          <h3>Nail Art & Chrome</h3>
+          <div class="price">$10 – $40</div>
+          <p>Custom nail art, chrome powder, glitter, and 3D details.</p>
+          <div class="duration">⏱ +30min</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer id="contact">
-        <p style="font-family: var(--font-heading); font-size: 1.3rem;">Juliana Callegaris Beauty Studio</p>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">Apopka / Region of Orlando, FL</p>
-        
-        <ul class="contacts-list">
-            <li><a href="https://wa.me/19546956445" target="_blank">WhatsApp: +1 (954) 695-6445</a></li>
-            <li><a href="https://www.instagram.com/beautybyjucallega" target="_blank">Instagram: @beautybyjucallega</a></li>
-            <li><a href="https://facebook.com/p/Juliana-Callegaris-Beauty-Studio-61579021635137/" target="_blank">Facebook Studio</a></li>
-            <li><a>E-mail: [PENDENTE]</a></li>
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="container">
+      <h2 class="section-title">Recent <span>Work</span></h2>
+      <p class="section-sub">A glimpse of our favorite creations — each set is unique.</p>
+      <div class="gallery-grid">
+        <!-- 9 placeholder images (using subtle SVG patterns) -->
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Ccircle cx='100' cy='100' r='60' fill='%23b08d57' opacity='0.06'/%3E%3Ctext x='70' y='115' font-family='Playfair Display, serif' font-size='28' fill='%23b08d57'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery image 1" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23efe8dd'/%3E%3Ccircle cx='100' cy='100' r='60' fill='%23b08d57' opacity='0.08'/%3E%3Ctext x='70' y='115' font-family='Playfair Display, serif' font-size='28' fill='%239d7a47'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery image 2" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Crect x='30' y='30' width='140' height='140' rx='12' fill='%23b08d57' opacity='0.06'/%3E%3Ctext x='60' y='115' font-family='Playfair Display, serif' font-size='32' fill='%23b08d57'%3E%3C/text%3E%3C/svg%3E" alt="Gallery image 3" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Ccircle cx='100' cy='100' r='50' fill='%23b08d57' opacity='0.05'/%3E%3Ctext x='72' y='115' font-family='Playfair Display, serif' font-size='30' fill='%23b08d57'%3EJ%3C/text%3E%3C/svg%3E" alt="Gallery image 4" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23efe8dd'/%3E%3Ccircle cx='100' cy='100' r='70' fill='%23b08d57' opacity='0.06'/%3E%3Ctext x='65' y='115' font-family='Playfair Display, serif' font-size='32' fill='%239d7a47'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery image 5" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Crect x='40' y='40' width='120' height='120' rx='60' fill='%23b08d57' opacity='0.04'/%3E%3Ctext x='70' y='115' font-family='Playfair Display, serif' font-size='28' fill='%23b08d57'%3E%3C/text%3E%3C/svg%3E" alt="Gallery image 6" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Ccircle cx='100' cy='100' r='60' fill='%23b08d57' opacity='0.07'/%3E%3Ctext x='72' y='115' font-family='Playfair Display, serif' font-size='30' fill='%23b08d57'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery image 7" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23efe8dd'/%3E%3Crect x='30' y='30' width='140' height='140' rx='20' fill='%23b08d57' opacity='0.05'/%3E%3Ctext x='70' y='115' font-family='Playfair Display, serif' font-size='28' fill='%239d7a47'%3EJ%3C/text%3E%3C/svg%3E" alt="Gallery image 8" />
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Ccircle cx='100' cy='100' r='70' fill='%23b08d57' opacity='0.04'/%3E%3Ctext x='65' y='115' font-family='Playfair Display, serif' font-size='34' fill='%23b08d57'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery image 9" />
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" style="background: #faf8f5;">
+    <div class="container">
+      <h2 class="section-title">What clients <span>say</span></h2>
+      <p class="section-sub">Real feedback from real clients — because your trust is our best reward.</p>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>“Juliana is an artist! My nails have never looked this good. She's meticulous and so kind.”</p>
+          <div class="author">— Amanda R.</div>
+          <div class="role">Gel Nails</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>“Best brow lamination I've ever had. Finally found my go-to brow expert in Florida!”</p>
+          <div class="author">— Sofia M.</div>
+          <div class="role">Brow Lamination</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>“The studio is beautiful, clean, and she makes you feel so comfortable. Highly recommend!”</p>
+          <div class="author">— Jessica P.</div>
+          <div class="role">Manicure & Pedicure</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POLICY -->
+  <section id="policy">
+    <div class="container">
+      <h2 class="section-title">Scheduling <span>Policy</span></h2>
+      <p class="section-sub">We value your time and ours — please read before booking.</p>
+      <div class="policy-box">
+        <h3>✦ Appointment guidelines</h3>
+        <ul>
+          <li><strong>Deposit:</strong> A 50% deposit is required to secure your appointment.</li>
+          <li><strong>Cancellation:</strong> Cancel at least 24h in advance to reschedule without penalty.</li>
+          <li><strong>Late arrivals:</strong> If you're more than 15min late, your appointment may be shortened or rescheduled.</li>
+          <li><strong>Payments:</strong> We accept cash, Zelle, and major credit cards.</li>
         </ul>
-        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2rem;">&copy; 2026 Juliana Callegaris. All rights reserved.</p>
-    </footer>
+        <div class="highlight">
+          💬 <strong>Need help finding us?</strong> We'll send a navigation link right after booking — just tap and go!
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        const translations = {
-            pt: {
-                nav_about: "Sobre",
-                nav_services: "Serviços",
-                nav_booking: "Agendar",
-                nav_contact: "Contato",
-                hero_title: "Elegância e Realce para sua Beleza Natural",
-                hero_sub: "Atendimento exclusivo com técnicas modernas em alongamento de unhas e estética.",
-                btn_book: "Agendar Horário",
-                sub_services: "Catálogo & Preços",
-                title_services: "Nossos Serviços",
-                srv_1_desc: "Técnica elegante com acabamento natural e duradouro.",
-                srv_2_desc: "Efeito espelhado moderno e sofisticado para suas unhas.",
-                srv_3_desc: "Cutilagem de alta precisão e acabamento impecável.",
-                title_booking: "Solicitar Agendamento",
-                lbl_name: "Nome Completo",
-                lbl_phone: "WhatsApp / Telefone",
-                lbl_service: "Serviço Desejado",
-                btn_submit: "Confirmar Solicitação"
-            },
-            en: {
-                nav_about: "About",
-                nav_services: "Services",
-                nav_booking: "Book Now",
-                nav_contact: "Contact",
-                hero_title: "Elegance and Highlight for Your Natural Beauty",
-                hero_sub: "Exclusive care with modern nail extension and aesthetic techniques.",
-                btn_book: "Book Appointment",
-                sub_services: "Catalog & Pricing",
-                title_services: "Our Services",
-                srv_1_desc: "Elegant technique with a natural and long-lasting finish.",
-                srv_2_desc: "Modern and sophisticated chrome effect for your nails.",
-                srv_3_desc: "High precision Russian manicure with flawless finish.",
-                title_booking: "Request Appointment",
-                lbl_name: "Full Name",
-                lbl_phone: "WhatsApp / Phone",
-                lbl_service: "Desired Service",
-                btn_submit: "Confirm Request"
-            },
-            es: {
-                nav_about: "Sobre mí",
-                nav_services: "Servicios",
-                nav_booking: "Reservar",
-                nav_contact: "Contacto",
-                hero_title: "Elegancia y Realce para tu Belleza Natural",
-                hero_sub: "Atención exclusiva con técnicas modernas en uñas y estética.",
-                btn_book: "Reservar Cita",
-                sub_services: "Catálogo y Precios",
-                title_services: "Nuestros Servicios",
-                srv_1_desc: "Técnica elegante con acabado natural y duradero.",
-                srv_2_desc: "Efecto espejo moderno y sofisticado para tus uñas.",
-                srv_3_desc: "Manicura rusa de alta precisión con acabado impecable.",
-                title_booking: "Solicitar Cita",
-                lbl_name: "Nombre Completo",
-                lbl_phone: "WhatsApp / Teléfono",
-                lbl_service: "Servicio Deseado",
-                btn_submit: "Confirmar Solicitud"
-            }
-        };
+  <!-- CONTACT -->
+  <section id="contact" style="background: #faf8f5;">
+    <div class="container contact-grid">
+      <div>
+        <h2 class="section-title">Get in <span>touch</span></h2>
+        <p class="section-sub">Ready to book? Reach out and let's create something beautiful together.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="icon">📱</div>
+            <div><span class="label">WhatsApp</span><br /><a href="https://wa.me/19546956445" target="_blank">+1 (954) 695-6445</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">✉️</div>
+            <div><span class="label">Email</span><br /><a href="mailto:julianacallegaris@gmail.com">julianacallegaris@gmail.com</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">📍</div>
+            <div><span class="label">Location</span><br />Apopka, FL (exact address sent upon booking)</div>
+          </div>
+          <div class="contact-socials">
+            <a href="https://www.instagram.com/beautybyjucallega" target="_blank">📸 Instagram</a>
+            <a href="https://www.facebook.com/p/Juliana-Callegaris-Beauty-Studio-61579021635137/" target="_blank">📘 Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:#fff; padding:32px 28px; border-radius:24px; border:1px solid rgba(176,141,87,0.08);">
+          <h3 style="font-family:'Playfair Display',serif; font-size:22px; margin-bottom:12px;">Book your session</h3>
+          <p style="font-size:14px; color:#6a625a; margin-bottom:20px;">Fill in the details and we'll confirm your time.</p>
+          <form style="display:flex; flex-direction:column; gap:16px;">
+            <input type="text" placeholder="Your name" style="padding:14px 18px; border:1px solid #e2dad2; border-radius:12px; font-size:15px; background:#faf8f5;" />
+            <input type="email" placeholder="Email" style="padding:14px 18px; border:1px solid #e2dad2; border-radius:12px; font-size:15px; background:#faf8f5;" />
+            <input type="tel" placeholder="WhatsApp number" style="padding:14px 18px; border:1px solid #e2dad2; border-radius:12px; font-size:15px; background:#faf8f5;" />
+            <select style="padding:14px 18px; border:1px solid #e2dad2; border-radius:12px; font-size:15px; background:#faf8f5;">
+              <option>Choose a service</option>
+              <option>Gel Nails</option>
+              <option>Manicure & Pedicure</option>
+              <option>Lash & Brow</option>
+              <option>Waxing & Henna</option>
+              <option>Micropigmentation</option>
+            </select>
+            <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">Send request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        function setLanguage(lang) {
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.innerText.toLowerCase() === lang) btn.classList.add('active');
-            });
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        &copy; 2026 Juliana Callegaris Beauty Studio &bull; Apopka, FL
+      </div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/beautybyjucallega" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/p/Juliana-Callegaris-Beauty-Studio-61579021635137/" target="_blank">Facebook</a>
+        <a href="mailto:julianacallegaris@gmail.com">Email</a>
+        <a href="https://wa.me/19546956445" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
 
-            document.querySelectorAll('[data-i18n]').forEach(elem => {
-                const key = elem.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    elem.innerText = translations[lang][key];
-                }
-            });
-        }
-    </script>
+  <!-- SIMPLE LANGUAGE TOGGLE (visual only – demo) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btns = document.querySelectorAll('.lang-btn');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          // In a real version, this would switch all text nodes.
+          // For now we just toggle the active state.
+          console.log('Language switched to:', btn.dataset.lang);
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>
