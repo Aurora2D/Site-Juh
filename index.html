@@ -148,22 +148,6 @@
             box-shadow: 0 4px 12px rgba(176, 141, 87, 0.3);
         }
 
-        .nav-admin {
-            background: #1f1c18;
-            color: #fff !important;
-            padding: 8px 20px;
-            border-radius: 40px;
-            border-bottom: none !important;
-            font-weight: 600;
-            transition: 0.2s;
-            text-decoration: none;
-        }
-
-        .nav-admin:hover {
-            background: #2d2a26;
-            transform: translateY(-2px);
-        }
-
         /* --- HERO --- */
         .hero {
             padding: 60px 0 80px 0;
@@ -573,6 +557,11 @@
             box-shadow: 0 0 0 3px rgba(176, 141, 87, 0.08);
         }
 
+        .quick-book-form .btn-primary {
+            width: 100%;
+            justify-content: center;
+        }
+
         /* --- FOOTER --- */
         footer {
             background: #1f1c18;
@@ -682,7 +671,6 @@
             <nav>
                 <a href="index.html" data-key="navHome">Home</a>
                 <a href="booking.html" data-key="navBook" class="nav-cta">Book Now</a>
-                <a href="admin.html" data-key="navAdmin" class="nav-admin">🔐 Admin</a>
             </nav>
         </div>
     </header>
@@ -726,7 +714,6 @@
             <h2 class="section-title"><span data-key="servicesTitle">Our</span> <span data-key="servicesTitle2">Services</span></h2>
             <p class="section-sub" data-key="servicesSub">From nails to brows — each service is crafted with care, precision, and premium products.</p>
             <div class="services-grid">
-                <!-- Cada card de serviço linka para booking.html com o serviço pré-selecionado -->
                 <a href="booking.html?service=Gel%20Nails" class="service-card">
                     <h3 data-key="serv1">Gel Nails</h3>
                     <div class="price">$45 – $85</div>
@@ -905,7 +892,6 @@
             en: {
                 navHome: 'Home',
                 navBook: 'Book Now',
-                navAdmin: '🔐 Admin',
                 heroTitle: 'Beauty that',
                 heroTitle2: 'speaks for itself',
                 heroDesc: 'Nail artistry, lash & brow design, and premium beauty services in Apopka, FL. Where detail meets elegance.',
@@ -962,7 +948,6 @@
             pt: {
                 navHome: 'Início',
                 navBook: 'Agendar',
-                navAdmin: '🔐 Admin',
                 heroTitle: 'Beleza que',
                 heroTitle2: 'fala por si',
                 heroDesc: 'Arte em unhas, design de cílios & sobrancelhas, e serviços premium em Apopka, FL. Onde o detalhe encontra a elegância.',
@@ -1019,7 +1004,6 @@
             es: {
                 navHome: 'Inicio',
                 navBook: 'Reservar',
-                navAdmin: '🔐 Admin',
                 heroTitle: 'Belleza que',
                 heroTitle2: 'habla por sí misma',
                 heroDesc: 'Arte en uñas, diseño de pestañas & cejas, y servicios premium en Apopka, FL. Donde el detalle encuentra la elegancia.',
