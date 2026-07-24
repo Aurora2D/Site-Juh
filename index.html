@@ -89,6 +89,7 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .logo-svg {
@@ -113,6 +114,7 @@
             gap: 28px;
             font-size: 14px;
             font-weight: 500;
+            align-items: center;
         }
 
         nav a {
@@ -137,6 +139,7 @@
             border-bottom: none !important;
             font-weight: 600;
             transition: 0.2s;
+            text-decoration: none;
         }
 
         .nav-cta:hover {
@@ -145,25 +148,20 @@
             box-shadow: 0 4px 12px rgba(176, 141, 87, 0.3);
         }
 
-        /* --- PAGES --- */
-        .page {
-            display: none;
-            animation: fadeIn 0.4s ease;
+        .nav-admin {
+            background: #1f1c18;
+            color: #fff !important;
+            padding: 8px 20px;
+            border-radius: 40px;
+            border-bottom: none !important;
+            font-weight: 600;
+            transition: 0.2s;
+            text-decoration: none;
         }
 
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .nav-admin:hover {
+            background: #2d2a26;
+            transform: translateY(-2px);
         }
 
         /* --- HERO --- */
@@ -317,6 +315,9 @@
             border: 1px solid rgba(176, 141, 87, 0.10);
             transition: 0.25s;
             cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .service-card:hover {
@@ -530,232 +531,46 @@
             transform: translateY(-2px);
         }
 
-        /* --- BOOKING PAGE --- */
-        .booking-container {
-            max-width: 800px;
-            margin: 0 auto;
+        /* --- QUICK BOOKING FORM --- */
+        .quick-book-form {
             background: #fff;
-            padding: 48px;
+            padding: 32px 28px;
             border-radius: 24px;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.04);
             border: 1px solid rgba(176, 141, 87, 0.08);
         }
 
-        .booking-container h2 {
+        .quick-book-form h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            margin-bottom: 8px;
+            font-size: 22px;
+            margin-bottom: 12px;
         }
 
-        .booking-container .sub {
-            color: #7a6e64;
-            margin-bottom: 32px;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 6px;
+        .quick-book-form .sub {
             font-size: 14px;
-            color: #4a443e;
+            color: #6a625a;
+            margin-bottom: 20px;
         }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .quick-book-form .form-group {
+            margin-bottom: 16px;
+        }
+
+        .quick-book-form input,
+        .quick-book-form select {
             width: 100%;
             padding: 14px 18px;
-            border: 1.5px solid #e2dad2;
+            border: 1px solid #e2dad2;
             border-radius: 12px;
             font-size: 15px;
-            font-family: 'Inter', sans-serif;
             background: #faf8f5;
-            transition: 0.2s;
+            font-family: 'Inter', sans-serif;
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .quick-book-form input:focus,
+        .quick-book-form select:focus {
             outline: none;
             border-color: #b08d57;
             box-shadow: 0 0 0 3px rgba(176, 141, 87, 0.08);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .time-slot {
-            padding: 10px 16px;
-            border: 1.5px solid #e2dad2;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 14px;
-            background: #faf8f5;
-        }
-
-        .time-slot:hover {
-            border-color: #b08d57;
-            background: rgba(176, 141, 87, 0.04);
-        }
-
-        .time-slot.selected {
-            border-color: #b08d57;
-            background: #b08d57;
-            color: #fff;
-        }
-
-        .time-slot.booked {
-            opacity: 0.4;
-            cursor: not-allowed;
-            text-decoration: line-through;
-        }
-
-        /* --- ADMIN PANEL --- */
-        .admin-panel {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .admin-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-
-        .stat-card {
-            background: #fff;
-            padding: 20px;
-            border-radius: 16px;
-            border: 1px solid rgba(176, 141, 87, 0.08);
-            text-align: center;
-        }
-
-        .stat-card .number {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            color: #b08d57;
-        }
-
-        .stat-card .label {
-            font-size: 13px;
-            color: #7a6e64;
-            margin-top: 4px;
-        }
-
-        .appointment-list {
-            background: #fff;
-            border-radius: 20px;
-            border: 1px solid rgba(176, 141, 87, 0.08);
-            overflow: hidden;
-        }
-
-        .appointment-item {
-            padding: 20px 24px;
-            border-bottom: 1px solid rgba(176, 141, 87, 0.06);
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr auto;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .appointment-item:last-child {
-            border-bottom: none;
-        }
-
-        .appointment-item .client {
-            font-weight: 500;
-        }
-
-        .appointment-item .service {
-            color: #7a6e64;
-            font-size: 14px;
-        }
-
-        .appointment-item .time {
-            color: #7a6e64;
-            font-size: 14px;
-        }
-
-        .status-badge {
-            padding: 4px 14px;
-            border-radius: 40px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .status-badge.confirmed {
-            background: #e6f4ea;
-            color: #1e7e34;
-        }
-
-        .status-badge.pending {
-            background: #fff3e0;
-            color: #b76e0a;
-        }
-
-        .status-badge.cancelled {
-            background: #fce8e6;
-            color: #b3261e;
-        }
-
-        .action-btns {
-            display: flex;
-            gap: 8px;
-        }
-
-        .action-btns button {
-            padding: 6px 14px;
-            border: none;
-            border-radius: 8px;
-            font-size: 12px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: 0.2s;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .action-btns .approve {
-            background: #e6f4ea;
-            color: #1e7e34;
-        }
-
-        .action-btns .approve:hover {
-            background: #c8e6d2;
-        }
-
-        .action-btns .cancel {
-            background: #fce8e6;
-            color: #b3261e;
-        }
-
-        .action-btns .cancel:hover {
-            background: #fad2cf;
         }
 
         /* --- FOOTER --- */
@@ -805,13 +620,6 @@
             .contact-grid {
                 grid-template-columns: 1fr;
             }
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            .appointment-item {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
         }
 
         @media (max-width: 600px) {
@@ -840,9 +648,6 @@
             .policy-box {
                 padding: 24px 20px;
             }
-            .booking-container {
-                padding: 24px;
-            }
             .footer-inner {
                 flex-direction: column;
                 text-align: center;
@@ -865,7 +670,7 @@
     <!-- HEADER -->
     <header>
         <div class="container header-inner">
-            <div class="logo-area" onclick="showPage('home')">
+            <a href="index.html" class="logo-area">
                 <svg class="logo-svg" viewBox="0 0 100 60" fill="none">
                     <path d="M20 10 L20 50 L50 50 L50 10 L20 10Z" fill="#B08D57" opacity="0.12"/>
                     <path d="M28 14 L28 46 L46 46 L46 14 L28 14Z" fill="#B08D57" opacity="0.20"/>
@@ -873,243 +678,197 @@
                     <text x="54" y="42" font-family="'Playfair Display', serif" font-size="18" font-weight="400" fill="#B08D57">✦</text>
                 </svg>
                 <span class="logo-text">Juliana <span>Callegaris</span></span>
-            </div>
+            </a>
             <nav>
-                <a onclick="showPage('home')" data-key="navHome">Home</a>
-                <a onclick="showPage('booking')" data-key="navBook" class="nav-cta">Book Now</a>
-                <a onclick="showPage('admin')" data-key="navAdmin">Admin</a>
+                <a href="index.html" data-key="navHome">Home</a>
+                <a href="booking.html" data-key="navBook" class="nav-cta">Book Now</a>
+                <a href="admin.html" data-key="navAdmin" class="nav-admin">🔐 Admin</a>
             </nav>
         </div>
     </header>
 
-    <!-- ==================== PAGE: HOME ==================== -->
-    <div id="page-home" class="page active">
-        <!-- HERO -->
-        <section class="hero">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <h1><span data-key="heroTitle">Beauty that</span> <span data-key="heroTitle2">speaks for itself</span></h1>
-                    <p data-key="heroDesc">Nail artistry, lash & brow design, and premium beauty services in Apopka, FL. Where detail meets elegance.</p>
-                    <div class="hero-actions">
-                        <button onclick="showPage('booking')" class="btn-primary" data-key="heroBtn">Book your appointment</button>
-                        <button onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})" class="btn-secondary" data-key="heroBtn2">Explore services</button>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f7f1e9'/%3E%3Ccircle cx='200' cy='200' r='120' fill='%23b08d57' opacity='0.06'/%3E%3Ccircle cx='200' cy='200' r='80' fill='%23b08d57' opacity='0.08'/%3E%3Ctext x='140' y='220' font-family='Playfair Display, serif' font-size='42' fill='%23b08d57'%3E✦%3C/text%3E%3Ctext x='170' y='280' font-family='Inter, sans-serif' font-size='18' fill='%235a524a'%3EBeauty Studio%3C/text%3E%3C/svg%3E" alt="Beauty Studio" />
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1><span data-key="heroTitle">Beauty that</span> <span data-key="heroTitle2">speaks for itself</span></h1>
+                <p data-key="heroDesc">Nail artistry, lash & brow design, and premium beauty services in Apopka, FL. Where detail meets elegance.</p>
+                <div class="hero-actions">
+                    <a href="booking.html" class="btn-primary" data-key="heroBtn">Book your appointment</a>
+                    <a href="#services" class="btn-secondary" data-key="heroBtn2">Explore services</a>
                 </div>
             </div>
-        </section>
+            <div class="hero-image">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f7f1e9'/%3E%3Ccircle cx='200' cy='200' r='120' fill='%23b08d57' opacity='0.06'/%3E%3Ccircle cx='200' cy='200' r='80' fill='%23b08d57' opacity='0.08'/%3E%3Ctext x='140' y='220' font-family='Playfair Display, serif' font-size='42' fill='%23b08d57'%3E✦%3C/text%3E%3Ctext x='170' y='280' font-family='Inter, sans-serif' font-size='18' fill='%235a524a'%3EBeauty Studio%3C/text%3E%3C/svg%3E" alt="Beauty Studio" />
+            </div>
+        </div>
+    </section>
 
-        <!-- ABOUT -->
-        <section id="about">
-            <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
-                <div>
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23f7f1e9'/%3E%3Crect x='40' y='40' width='420' height='420' rx='24' fill='%23efe8dd'/%3E%3Ccircle cx='250' cy='200' r='80' fill='%23b08d57' opacity='0.08'/%3E%3Ctext x='190' y='260' font-family='Playfair Display, serif' font-size='60' fill='%23b08d57'%3EJ%3C/text%3E%3Ctext x='210' y='330' font-family='Inter, sans-serif' font-size='18' fill='%235a524a'%3EJuliana Callegaris%3C/text%3E%3C/svg%3E" style="width:100%;border-radius:24px;" alt="Juliana" />
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+            <div>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23f7f1e9'/%3E%3Crect x='40' y='40' width='420' height='420' rx='24' fill='%23efe8dd'/%3E%3Ccircle cx='250' cy='200' r='80' fill='%23b08d57' opacity='0.08'/%3E%3Ctext x='190' y='260' font-family='Playfair Display, serif' font-size='60' fill='%23b08d57'%3EJ%3C/text%3E%3Ctext x='210' y='330' font-family='Inter, sans-serif' font-size='18' fill='%235a524a'%3EJuliana Callegaris%3C/text%3E%3C/svg%3E" style="width:100%;border-radius:24px;" alt="Juliana" />
+            </div>
+            <div>
+                <h2 class="section-title"><span data-key="aboutTitle">About</span> <span data-key="aboutTitle2">Juliana</span></h2>
+                <div class="divider-line"></div>
+                <p data-key="aboutP1">With over 8 years of experience in the beauty industry, Juliana Callegaris brings the precision of Brazilian techniques to Florida. Specializing in nail architecture, lash lifting, and brow design, she creates tailored looks that enhance natural beauty.</p>
+                <blockquote style="font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:#b08d57;margin:24px 0;padding-left:24px;border-left:3px solid #b08d57;" data-key="aboutQuote">"Beauty is in the details — I treat every client like a canvas, and my goal is to make you feel confident and radiant."</blockquote>
+                <p data-key="aboutP2">Certified in multiple advanced techniques, Juliana stays ahead of trends to deliver flawless, long-lasting results.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" style="background:#faf8f5;">
+        <div class="container">
+            <h2 class="section-title"><span data-key="servicesTitle">Our</span> <span data-key="servicesTitle2">Services</span></h2>
+            <p class="section-sub" data-key="servicesSub">From nails to brows — each service is crafted with care, precision, and premium products.</p>
+            <div class="services-grid">
+                <!-- Cada card de serviço linka para booking.html com o serviço pré-selecionado -->
+                <a href="booking.html?service=Gel%20Nails" class="service-card">
+                    <h3 data-key="serv1">Gel Nails</h3>
+                    <div class="price">$45 – $85</div>
+                    <p data-key="serv1Desc">Gel manicure, builder gel, hard gel, and gel extensions.</p>
+                    <div class="duration">⏱ 1h – 2h</div>
+                </a>
+                <a href="booking.html?service=Manicure%20%26%20Pedicure" class="service-card">
+                    <h3 data-key="serv2">Manicure & Pedicure</h3>
+                    <div class="price">$35 – $70</div>
+                    <p data-key="serv2Desc">Classic, spa, and deluxe manicure/pedicure with paraffin.</p>
+                    <div class="duration">⏱ 1h – 1h30</div>
+                </a>
+                <a href="booking.html?service=Lash%20%26%20Brow" class="service-card">
+                    <h3 data-key="serv3">Lash & Brow</h3>
+                    <div class="price">$40 – $120</div>
+                    <p data-key="serv3Desc">Lash lifting, brow lamination, tinting, and shaping.</p>
+                    <div class="duration">⏱ 45min – 1h30</div>
+                </a>
+                <a href="booking.html?service=Waxing%20%26%20Henna" class="service-card">
+                    <h3 data-key="serv4">Waxing & Henna</h3>
+                    <div class="price">$20 – $60</div>
+                    <p data-key="serv4Desc">Brow waxing, henna brows, and facial hair removal.</p>
+                    <div class="duration">⏱ 20min – 50min</div>
+                </a>
+                <a href="booking.html?service=Micropigmentation" class="service-card">
+                    <h3 data-key="serv5">Micropigmentation</h3>
+                    <div class="price">$150 – $400</div>
+                    <p data-key="serv5Desc">Permanent makeup: brows, eyeliner, and lips.</p>
+                    <div class="duration">⏱ 2h – 3h</div>
+                </a>
+                <a href="booking.html?service=Nail%20Art%20%26%20Chrome" class="service-card">
+                    <h3 data-key="serv6">Nail Art & Chrome</h3>
+                    <div class="price">$10 – $40</div>
+                    <p data-key="serv6Desc">Custom nail art, chrome powder, glitter, and 3D details.</p>
+                    <div class="duration">⏱ +30min</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title"><span data-key="galleryTitle">Recent</span> <span data-key="galleryTitle2">Work</span></h2>
+            <p class="section-sub" data-key="gallerySub">A glimpse of our favorite creations — each set is unique.</p>
+            <div class="gallery-grid">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Ccircle cx='100' cy='100' r='60' fill='%23b08d57' opacity='0.06'/%3E%3Ctext x='70' y='115' font-family='Playfair Display, serif' font-size='28' fill='%23b08d57'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery 1" />
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23efe8dd'/%3E%3Ccircle cx='100' cy='100' r='60' fill='%23b08d57' opacity='0.08'/%3E%3Ctext x='70' y='115' font-family='Playfair Display, serif' font-size='28' fill='%239d7a47'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery 2" />
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Crect x='30' y='30' width='140' height='140' rx='12' fill='%23b08d57' opacity='0.06'/%3E%3Ctext x='60' y='115' font-family='Playfair Display, serif' font-size='32' fill='%23b08d57'%3E%3C/text%3E%3C/svg%3E" alt="Gallery 3" />
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Ccircle cx='100' cy='100' r='50' fill='%23b08d57' opacity='0.05'/%3E%3Ctext x='72' y='115' font-family='Playfair Display, serif' font-size='30' fill='%23b08d57'%3EJ%3C/text%3E%3C/svg%3E" alt="Gallery 4" />
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23efe8dd'/%3E%3Ccircle cx='100' cy='100' r='70' fill='%23b08d57' opacity='0.06'/%3E%3Ctext x='65' y='115' font-family='Playfair Display, serif' font-size='32' fill='%239d7a47'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery 5" />
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Crect x='40' y='40' width='120' height='120' rx='60' fill='%23b08d57' opacity='0.04'/%3E%3Ctext x='70' y='115' font-family='Playfair Display, serif' font-size='28' fill='%23b08d57'%3E%3C/text%3E%3C/svg%3E" alt="Gallery 6" />
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Ccircle cx='100' cy='100' r='60' fill='%23b08d57' opacity='0.07'/%3E%3Ctext x='72' y='115' font-family='Playfair Display, serif' font-size='30' fill='%23b08d57'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery 7" />
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23efe8dd'/%3E%3Crect x='30' y='30' width='140' height='140' rx='20' fill='%23b08d57' opacity='0.05'/%3E%3Ctext x='70' y='115' font-family='Playfair Display, serif' font-size='28' fill='%239d7a47'%3EJ%3C/text%3E%3C/svg%3E" alt="Gallery 8" />
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Ccircle cx='100' cy='100' r='70' fill='%23b08d57' opacity='0.04'/%3E%3Ctext x='65' y='115' font-family='Playfair Display, serif' font-size='34' fill='%23b08d57'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery 9" />
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" style="background:#faf8f5;">
+        <div class="container">
+            <h2 class="section-title"><span data-key="testTitle">What clients</span> <span data-key="testTitle2">say</span></h2>
+            <p class="section-sub" data-key="testSub">Real feedback from real clients — because your trust is our best reward.</p>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p data-key="test1">"Juliana is an artist! My nails have never looked this good. She's meticulous and so kind."</p>
+                    <div class="author">— Amanda R.</div>
                 </div>
-                <div>
-                    <h2 class="section-title"><span data-key="aboutTitle">About</span> <span data-key="aboutTitle2">Juliana</span></h2>
-                    <div class="divider-line"></div>
-                    <p data-key="aboutP1">With over 8 years of experience in the beauty industry, Juliana Callegaris brings the precision of Brazilian techniques to Florida. Specializing in nail architecture, lash lifting, and brow design, she creates tailored looks that enhance natural beauty.</p>
-                    <blockquote style="font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:#b08d57;margin:24px 0;padding-left:24px;border-left:3px solid #b08d57;" data-key="aboutQuote">"Beauty is in the details — I treat every client like a canvas, and my goal is to make you feel confident and radiant."</blockquote>
-                    <p data-key="aboutP2">Certified in multiple advanced techniques, Juliana stays ahead of trends to deliver flawless, long-lasting results.</p>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p data-key="test2">"Best brow lamination I've ever had. Finally found my go-to brow expert in Florida!"</p>
+                    <div class="author">— Sofia M.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p data-key="test3">"The studio is beautiful, clean, and she makes you feel so comfortable. Highly recommend!"</p>
+                    <div class="author">— Jessica P.</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SERVICES -->
-        <section id="services" style="background:#faf8f5;">
-            <div class="container">
-                <h2 class="section-title"><span data-key="servicesTitle">Our</span> <span data-key="servicesTitle2">Services</span></h2>
-                <p class="section-sub" data-key="servicesSub">From nails to brows — each service is crafted with care, precision, and premium products.</p>
-                <div class="services-grid">
-                    <div class="service-card" onclick="showPage('booking')">
-                        <h3 data-key="serv1">Gel Nails</h3>
-                        <div class="price">$45 – $85</div>
-                        <p data-key="serv1Desc">Gel manicure, builder gel, hard gel, and gel extensions.</p>
-                        <div class="duration">⏱ 1h – 2h</div>
-                    </div>
-                    <div class="service-card" onclick="showPage('booking')">
-                        <h3 data-key="serv2">Manicure & Pedicure</h3>
-                        <div class="price">$35 – $70</div>
-                        <p data-key="serv2Desc">Classic, spa, and deluxe manicure/pedicure with paraffin.</p>
-                        <div class="duration">⏱ 1h – 1h30</div>
-                    </div>
-                    <div class="service-card" onclick="showPage('booking')">
-                        <h3 data-key="serv3">Lash & Brow</h3>
-                        <div class="price">$40 – $120</div>
-                        <p data-key="serv3Desc">Lash lifting, brow lamination, tinting, and shaping.</p>
-                        <div class="duration">⏱ 45min – 1h30</div>
-                    </div>
-                    <div class="service-card" onclick="showPage('booking')">
-                        <h3 data-key="serv4">Waxing & Henna</h3>
-                        <div class="price">$20 – $60</div>
-                        <p data-key="serv4Desc">Brow waxing, henna brows, and facial hair removal.</p>
-                        <div class="duration">⏱ 20min – 50min</div>
-                    </div>
-                    <div class="service-card" onclick="showPage('booking')">
-                        <h3 data-key="serv5">Micropigmentation</h3>
-                        <div class="price">$150 – $400</div>
-                        <p data-key="serv5Desc">Permanent makeup: brows, eyeliner, and lips.</p>
-                        <div class="duration">⏱ 2h – 3h</div>
-                    </div>
-                    <div class="service-card" onclick="showPage('booking')">
-                        <h3 data-key="serv6">Nail Art & Chrome</h3>
-                        <div class="price">$10 – $40</div>
-                        <p data-key="serv6Desc">Custom nail art, chrome powder, glitter, and 3D details.</p>
-                        <div class="duration">⏱ +30min</div>
-                    </div>
-                </div>
+    <!-- POLICY -->
+    <section id="policy">
+        <div class="container">
+            <h2 class="section-title"><span data-key="policyTitle">Scheduling</span> <span data-key="policyTitle2">Policy</span></h2>
+            <p class="section-sub" data-key="policySub">We value your time and ours — please read before booking.</p>
+            <div class="policy-box">
+                <ul>
+                    <li data-key="policy1"><strong>Deposit:</strong> A 50% deposit is required to secure your appointment.</li>
+                    <li data-key="policy2"><strong>Cancellation:</strong> Cancel at least 24h in advance to reschedule without penalty.</li>
+                    <li data-key="policy3"><strong>Late arrivals:</strong> If you're more than 15min late, your appointment may be shortened or rescheduled.</li>
+                    <li data-key="policy4"><strong>Payments:</strong> We accept cash, Zelle, and major credit cards.</li>
+                </ul>
+                <div class="highlight" data-key="policyHelp">💬 <strong>Need help finding us?</strong> We'll send a navigation link right after booking — just tap and go!</div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- GALLERY -->
-        <section id="gallery">
-            <div class="container">
-                <h2 class="section-title"><span data-key="galleryTitle">Recent</span> <span data-key="galleryTitle2">Work</span></h2>
-                <p class="section-sub" data-key="gallerySub">A glimpse of our favorite creations — each set is unique.</p>
-                <div class="gallery-grid">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Ccircle cx='100' cy='100' r='60' fill='%23b08d57' opacity='0.06'/%3E%3Ctext x='70' y='115' font-family='Playfair Display, serif' font-size='28' fill='%23b08d57'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery 1" />
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23efe8dd'/%3E%3Ccircle cx='100' cy='100' r='60' fill='%23b08d57' opacity='0.08'/%3E%3Ctext x='70' y='115' font-family='Playfair Display, serif' font-size='28' fill='%239d7a47'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery 2" />
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Crect x='30' y='30' width='140' height='140' rx='12' fill='%23b08d57' opacity='0.06'/%3E%3Ctext x='60' y='115' font-family='Playfair Display, serif' font-size='32' fill='%23b08d57'%3E%3C/text%3E%3C/svg%3E" alt="Gallery 3" />
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Ccircle cx='100' cy='100' r='50' fill='%23b08d57' opacity='0.05'/%3E%3Ctext x='72' y='115' font-family='Playfair Display, serif' font-size='30' fill='%23b08d57'%3EJ%3C/text%3E%3C/svg%3E" alt="Gallery 4" />
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23efe8dd'/%3E%3Ccircle cx='100' cy='100' r='70' fill='%23b08d57' opacity='0.06'/%3E%3Ctext x='65' y='115' font-family='Playfair Display, serif' font-size='32' fill='%239d7a47'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery 5" />
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Crect x='40' y='40' width='120' height='120' rx='60' fill='%23b08d57' opacity='0.04'/%3E%3Ctext x='70' y='115' font-family='Playfair Display, serif' font-size='28' fill='%23b08d57'%3E%3C/text%3E%3C/svg%3E" alt="Gallery 6" />
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Ccircle cx='100' cy='100' r='60' fill='%23b08d57' opacity='0.07'/%3E%3Ctext x='72' y='115' font-family='Playfair Display, serif' font-size='30' fill='%23b08d57'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery 7" />
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23efe8dd'/%3E%3Crect x='30' y='30' width='140' height='140' rx='20' fill='%23b08d57' opacity='0.05'/%3E%3Ctext x='70' y='115' font-family='Playfair Display, serif' font-size='28' fill='%239d7a47'%3EJ%3C/text%3E%3C/svg%3E" alt="Gallery 8" />
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f7f1e9'/%3E%3Ccircle cx='100' cy='100' r='70' fill='%23b08d57' opacity='0.04'/%3E%3Ctext x='65' y='115' font-family='Playfair Display, serif' font-size='34' fill='%23b08d57'%3E✦%3C/text%3E%3C/svg%3E" alt="Gallery 9" />
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIALS -->
-        <section id="testimonials" style="background:#faf8f5;">
-            <div class="container">
-                <h2 class="section-title"><span data-key="testTitle">What clients</span> <span data-key="testTitle2">say</span></h2>
-                <p class="section-sub" data-key="testSub">Real feedback from real clients — because your trust is our best reward.</p>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card">
-                        <div class="stars">★★★★★</div>
-                        <p data-key="test1">"Juliana is an artist! My nails have never looked this good. She's meticulous and so kind."</p>
-                        <div class="author">— Amanda R.</div>
+    <!-- CONTACT -->
+    <section id="contact" style="background:#faf8f5;">
+        <div class="container contact-grid">
+            <div>
+                <h2 class="section-title"><span data-key="contactTitle">Get in</span> <span data-key="contactTitle2">touch</span></h2>
+                <p class="section-sub" data-key="contactSub">Ready to book? Reach out and let's create something beautiful together.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="icon">📱</div>
+                        <div><span class="label" data-key="contactWhats">WhatsApp</span><br /><a href="https://wa.me/19546956445" target="_blank">+1 (954) 695-6445</a></div>
                     </div>
-                    <div class="testimonial-card">
-                        <div class="stars">★★★★★</div>
-                        <p data-key="test2">"Best brow lamination I've ever had. Finally found my go-to brow expert in Florida!"</p>
-                        <div class="author">— Sofia M.</div>
+                    <div class="contact-item">
+                        <div class="icon">✉️</div>
+                        <div><span class="label" data-key="contactEmail">Email</span><br /><a href="mailto:Beautybyjucallega@gmail.com">Beautybyjucallega@gmail.com</a></div>
                     </div>
-                    <div class="testimonial-card">
-                        <div class="stars">★★★★★</div>
-                        <p data-key="test3">"The studio is beautiful, clean, and she makes you feel so comfortable. Highly recommend!"</p>
-                        <div class="author">— Jessica P.</div>
+                    <div class="contact-item">
+                        <div class="icon">📍</div>
+                        <div><span class="label" data-key="contactLocation">Location</span><br /><span data-key="contactLocationText">Apopka, FL (exact address sent upon booking)</span></div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- POLICY -->
-        <section id="policy">
-            <div class="container">
-                <h2 class="section-title"><span data-key="policyTitle">Scheduling</span> <span data-key="policyTitle2">Policy</span></h2>
-                <p class="section-sub" data-key="policySub">We value your time and ours — please read before booking.</p>
-                <div class="policy-box">
-                    <ul>
-                        <li data-key="policy1"><strong>Deposit:</strong> A 50% deposit is required to secure your appointment.</li>
-                        <li data-key="policy2"><strong>Cancellation:</strong> Cancel at least 24h in advance to reschedule without penalty.</li>
-                        <li data-key="policy3"><strong>Late arrivals:</strong> If you're more than 15min late, your appointment may be shortened or rescheduled.</li>
-                        <li data-key="policy4"><strong>Payments:</strong> We accept cash, Zelle, and major credit cards.</li>
-                    </ul>
-                    <div class="highlight" data-key="policyHelp">💬 <strong>Need help finding us?</strong> We'll send a navigation link right after booking — just tap and go!</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact" style="background:#faf8f5;">
-            <div class="container contact-grid">
-                <div>
-                    <h2 class="section-title"><span data-key="contactTitle">Get in</span> <span data-key="contactTitle2">touch</span></h2>
-                    <p class="section-sub" data-key="contactSub">Ready to book? Reach out and let's create something beautiful together.</p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="icon">📱</div>
-                            <div><span class="label" data-key="contactWhats">WhatsApp</span><br /><a href="https://wa.me/19546956445" target="_blank">+1 (954) 695-6445</a></div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="icon">✉️</div>
-                            <div><span class="label" data-key="contactEmail">Email</span><br /><a href="mailto:julianacallegaris@gmail.com">julianacallegaris@gmail.com</a></div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="icon">📍</div>
-                            <div><span class="label" data-key="contactLocation">Location</span><br /><span data-key="contactLocationText">Apopka, FL (exact address sent upon booking)</span></div>
-                        </div>
-                        <div class="contact-socials">
-                            <a href="https://www.instagram.com/beautybyjucallega" target="_blank">📸 Instagram</a>
-                            <a href="https://www.facebook.com/p/Juliana-Callegaris-Beauty-Studio-61579021635137/" target="_blank">📘 Facebook</a>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div style="background:#fff;padding:32px 28px;border-radius:24px;border:1px solid rgba(176,141,87,0.08);">
-                        <h3 style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:12px;" data-key="contactFormTitle">Book your session</h3>
-                        <p style="font-size:14px;color:#6a625a;margin-bottom:20px;" data-key="contactFormSub">Fill in the details and we'll confirm your time.</p>
-                        <form id="quickBookingForm" onsubmit="handleQuickBooking(event)">
-                            <div class="form-group">
-                                <input type="text" id="quickName" placeholder="Your name" style="width:100%;padding:14px 18px;border:1px solid #e2dad2;border-radius:12px;font-size:15px;background:#faf8f5;" />
-                            </div>
-                            <div class="form-group">
-                                <input type="email" id="quickEmail" placeholder="Email" style="width:100%;padding:14px 18px;border:1px solid #e2dad2;border-radius:12px;font-size:15px;background:#faf8f5;" />
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" id="quickPhone" placeholder="WhatsApp number" style="width:100%;padding:14px 18px;border:1px solid #e2dad2;border-radius:12px;font-size:15px;background:#faf8f5;" />
-                            </div>
-                            <div class="form-group">
-                                <select id="quickService" style="width:100%;padding:14px 18px;border:1px solid #e2dad2;border-radius:12px;font-size:15px;background:#faf8f5;">
-                                    <option value="">Choose a service</option>
-                                    <option value="Gel Nails">Gel Nails</option>
-                                    <option value="Manicure & Pedicure">Manicure & Pedicure</option>
-                                    <option value="Lash & Brow">Lash & Brow</option>
-                                    <option value="Waxing & Henna">Waxing & Henna</option>
-                                    <option value="Micropigmentation">Micropigmentation</option>
-                                    <option value="Nail Art & Chrome">Nail Art & Chrome</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;" data-key="contactSubmit">Send request</button>
-                        </form>
+                    <div class="contact-socials">
+                        <a href="https://www.instagram.com/beautybyjucallega" target="_blank">📸 Instagram</a>
+                        <a href="https://www.facebook.com/p/Juliana-Callegaris-Beauty-Studio-61579021635137/" target="_blank">📘 Facebook</a>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
-
-    <!-- ==================== PAGE: BOOKING ==================== -->
-    <div id="page-booking" class="page">
-        <section style="padding:40px 0 80px 0;">
-            <div class="container">
-                <div class="booking-container">
-                    <h2 data-key="bookingTitle">Book Your Appointment</h2>
-                    <p class="sub" data-key="bookingSub">Choose your service, pick a time, and we'll confirm everything via WhatsApp.</p>
-
-                    <form id="bookingForm" onsubmit="handleBooking(event)">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label data-key="bookingName">Full Name</label>
-                                <input type="text" id="bookName" required placeholder="Your full name" />
-                            </div>
-                            <div class="form-group">
-                                <label data-key="bookingEmail">Email</label>
-                                <input type="email" id="bookEmail" required placeholder="you@email.com" />
-                            </div>
-                        </div>
-
+            <div>
+                <div class="quick-book-form">
+                    <h3 data-key="contactFormTitle">Book your session</h3>
+                    <p class="sub" data-key="contactFormSub">Fill in the details and we'll confirm your time.</p>
+                    <form action="booking.html" method="GET">
                         <div class="form-group">
-                            <label data-key="bookingPhone">WhatsApp Number</label>
-                            <input type="tel" id="bookPhone" required placeholder="+1 (954) 695-6445" />
+                            <input type="text" name="name" placeholder="Your name" required />
                         </div>
-
                         <div class="form-group">
-                            <label data-key="bookingService">Select Service</label>
-                            <select id="bookService" required onchange="updateTimeSlots()">
+                            <input type="email" name="email" placeholder="Email" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="WhatsApp number" required />
+                        </div>
+                        <div class="form-group">
+                            <select name="service" required>
                                 <option value="">Choose a service</option>
                                 <option value="Gel Nails">Gel Nails</option>
                                 <option value="Manicure & Pedicure">Manicure & Pedicure</option>
@@ -1119,96 +878,12 @@
                                 <option value="Nail Art & Chrome">Nail Art & Chrome</option>
                             </select>
                         </div>
-
-                        <div class="form-group">
-                            <label data-key="bookingDate">Select Date</label>
-                            <input type="date" id="bookDate" required min="2026-07-25" />
-                        </div>
-
-                        <div class="form-group">
-                            <label data-key="bookingTime">Available Times</label>
-                            <div class="time-slots" id="timeSlots">
-                                <div class="time-slot" onclick="selectTime(this)">9:00 AM</div>
-                                <div class="time-slot" onclick="selectTime(this)">10:00 AM</div>
-                                <div class="time-slot" onclick="selectTime(this)">11:00 AM</div>
-                                <div class="time-slot" onclick="selectTime(this)">1:00 PM</div>
-                                <div class="time-slot" onclick="selectTime(this)">2:00 PM</div>
-                                <div class="time-slot" onclick="selectTime(this)">3:00 PM</div>
-                                <div class="time-slot" onclick="selectTime(this)">4:00 PM</div>
-                                <div class="time-slot booked" onclick="selectTime(this)">5:00 PM</div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label data-key="bookingNotes">Special Requests (optional)</label>
-                            <textarea id="bookNotes" rows="3" placeholder="Any allergies, preferences, or extra details..."></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:18px;padding:16px;" data-key="bookingSubmit">Confirm Appointment</button>
+                        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;" data-key="contactSubmit">Continue to Booking →</button>
                     </form>
-
-                    <div id="bookingConfirmation" style="display:none;margin-top:24px;padding:24px;background:#e6f4ea;border-radius:16px;text-align:center;">
-                        <h3 style="color:#1e7e34;margin-bottom:8px;" data-key="bookingConfirmTitle">✅ Appointment Requested!</h3>
-                        <p data-key="bookingConfirmText">We'll confirm your slot within 2 hours via WhatsApp. You'll receive a reminder 4h before.</p>
-                    </div>
                 </div>
             </div>
-        </section>
-    </div>
-
-    <!-- ==================== PAGE: ADMIN ==================== -->
-    <div id="page-admin" class="page">
-        <section style="padding:40px 0 80px 0;">
-            <div class="container">
-                <div class="admin-panel">
-                    <div class="admin-header">
-                        <div>
-                            <h2 style="font-family:'Playfair Display',serif;font-size:32px;" data-key="adminTitle">📋 Juh's Dashboard</h2>
-                            <p style="color:#7a6e64;" data-key="adminSub">Manage appointments, approve reviews, and block time slots.</p>
-                        </div>
-                        <div style="display:flex;gap:12px;">
-                            <button class="btn-secondary" style="padding:8px 20px;font-size:14px;" onclick="addTestAppointment()" data-key="adminAddTest">+ Add Test</button>
-                            <button class="btn-primary" style="padding:8px 20px;font-size:14px;" onclick="logoutAdmin()" data-key="adminLogout">Logout</button>
-                        </div>
-                    </div>
-
-                    <div class="admin-stats" id="adminStats">
-                        <div class="stat-card">
-                            <div class="number" id="statTotal">0</div>
-                            <div class="label" data-key="statTotal">Total Appointments</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="number" id="statToday">0</div>
-                            <div class="label" data-key="statToday">Today</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="number" id="statPending">0</div>
-                            <div class="label" data-key="statPending">Pending</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="number" id="statConfirmed">0</div>
-                            <div class="label" data-key="statConfirmed">Confirmed</div>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom:24px;">
-                        <h3 style="font-size:18px;font-weight:500;margin-bottom:12px;" data-key="adminAppointments">📅 Upcoming Appointments</h3>
-                        <div class="appointment-list" id="appointmentList">
-                            <!-- appointments will be rendered here -->
-                            <div style="padding:40px;text-align:center;color:#9a8e82;" data-key="adminNoAppointments">No appointments yet. Click "+ Add Test" to create one.</div>
-                        </div>
-                    </div>
-
-                    <div style="margin-top:32px;padding:24px;background:#fff;border-radius:20px;border:1px solid rgba(176,141,87,0.08);">
-                        <h3 style="font-size:18px;font-weight:500;margin-bottom:12px;" data-key="adminReviews">⭐ Pending Reviews</h3>
-                        <div id="pendingReviews" style="color:#7a6e64;">
-                            <p data-key="adminNoReviews">No pending reviews. Clients will be asked to rate 24h after their appointment.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
     <footer>
@@ -1217,7 +892,7 @@
             <div class="footer-links">
                 <a href="https://www.instagram.com/beautybyjucallega" target="_blank">Instagram</a>
                 <a href="https://www.facebook.com/p/Juliana-Callegaris-Beauty-Studio-61579021635137/" target="_blank">Facebook</a>
-                <a href="mailto:julianacallegaris@gmail.com">Email</a>
+                <a href="mailto:Beautybyjucallega@gmail.com">Email</a>
                 <a href="https://wa.me/19546956445" target="_blank">WhatsApp</a>
             </div>
         </div>
@@ -1225,17 +900,12 @@
 
     <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        // --- DATA ---
-        let appointments = [];
-        let selectedTime = null;
-        let currentLang = 'en';
-
         // --- TRANSLATIONS ---
         const translations = {
             en: {
                 navHome: 'Home',
                 navBook: 'Book Now',
-                navAdmin: 'Admin',
+                navAdmin: '🔐 Admin',
                 heroTitle: 'Beauty that',
                 heroTitle2: 'speaks for itself',
                 heroDesc: 'Nail artistry, lash & brow design, and premium beauty services in Apopka, FL. Where detail meets elegance.',
@@ -1287,36 +957,12 @@
                 contactLocationText: 'Apopka, FL (exact address sent upon booking)',
                 contactFormTitle: 'Book your session',
                 contactFormSub: 'Fill in the details and we\'ll confirm your time.',
-                contactSubmit: 'Send request',
-                bookingTitle: 'Book Your Appointment',
-                bookingSub: 'Choose your service, pick a time, and we\'ll confirm everything via WhatsApp.',
-                bookingName: 'Full Name',
-                bookingEmail: 'Email',
-                bookingPhone: 'WhatsApp Number',
-                bookingService: 'Select Service',
-                bookingDate: 'Select Date',
-                bookingTime: 'Available Times',
-                bookingNotes: 'Special Requests (optional)',
-                bookingSubmit: 'Confirm Appointment',
-                bookingConfirmTitle: '✅ Appointment Requested!',
-                bookingConfirmText: 'We\'ll confirm your slot within 2 hours via WhatsApp. You\'ll receive a reminder 4h before.',
-                adminTitle: '📋 Juh\'s Dashboard',
-                adminSub: 'Manage appointments, approve reviews, and block time slots.',
-                adminAddTest: '+ Add Test',
-                adminLogout: 'Logout',
-                statTotal: 'Total Appointments',
-                statToday: 'Today',
-                statPending: 'Pending',
-                statConfirmed: 'Confirmed',
-                adminAppointments: '📅 Upcoming Appointments',
-                adminNoAppointments: 'No appointments yet. Click "+ Add Test" to create one.',
-                adminReviews: '⭐ Pending Reviews',
-                adminNoReviews: 'No pending reviews. Clients will be asked to rate 24h after their appointment.',
+                contactSubmit: 'Continue to Booking →',
             },
             pt: {
                 navHome: 'Início',
                 navBook: 'Agendar',
-                navAdmin: 'Painel',
+                navAdmin: '🔐 Admin',
                 heroTitle: 'Beleza que',
                 heroTitle2: 'fala por si',
                 heroDesc: 'Arte em unhas, design de cílios & sobrancelhas, e serviços premium em Apopka, FL. Onde o detalhe encontra a elegância.',
@@ -1368,36 +1014,12 @@
                 contactLocationText: 'Apopka, FL (endereço exato enviado no agendamento)',
                 contactFormTitle: 'Agende sua sessão',
                 contactFormSub: 'Preencha os dados e confirmamos seu horário.',
-                contactSubmit: 'Enviar solicitação',
-                bookingTitle: 'Agende seu Horário',
-                bookingSub: 'Escolha o serviço, selecione um horário e confirmamos tudo pelo WhatsApp.',
-                bookingName: 'Nome Completo',
-                bookingEmail: 'Email',
-                bookingPhone: 'Número do WhatsApp',
-                bookingService: 'Selecione o Serviço',
-                bookingDate: 'Selecione a Data',
-                bookingTime: 'Horários Disponíveis',
-                bookingNotes: 'Pedidos Especiais (opcional)',
-                bookingSubmit: 'Confirmar Agendamento',
-                bookingConfirmTitle: '✅ Agendamento Solicitado!',
-                bookingConfirmText: 'Confirmamos seu horário em até 2h pelo WhatsApp. Você receberá um lembrete 4h antes.',
-                adminTitle: '📋 Painel da Juh',
-                adminSub: 'Gerencie agendamentos, aprove avaliações e bloqueie horários.',
-                adminAddTest: '+ Adicionar Teste',
-                adminLogout: 'Sair',
-                statTotal: 'Total de Agendamentos',
-                statToday: 'Hoje',
-                statPending: 'Pendentes',
-                statConfirmed: 'Confirmados',
-                adminAppointments: '📅 Agendamentos Próximos',
-                adminNoAppointments: 'Nenhum agendamento ainda. Clique em "+ Adicionar Teste" para criar um.',
-                adminReviews: '⭐ Avaliações Pendentes',
-                adminNoReviews: 'Nenhuma avaliação pendente. Clientes serão convidados a avaliar 24h após o atendimento.',
+                contactSubmit: 'Continuar para Agendamento →',
             },
             es: {
                 navHome: 'Inicio',
                 navBook: 'Reservar',
-                navAdmin: 'Panel',
+                navAdmin: '🔐 Admin',
                 heroTitle: 'Belleza que',
                 heroTitle2: 'habla por sí misma',
                 heroDesc: 'Arte en uñas, diseño de pestañas & cejas, y servicios premium en Apopka, FL. Donde el detalle encuentra la elegancia.',
@@ -1449,33 +1071,11 @@
                 contactLocationText: 'Apopka, FL (dirección exacta enviada al agendar)',
                 contactFormTitle: 'Reserva tu sesión',
                 contactFormSub: 'Completa los datos y confirmamos tu horario.',
-                contactSubmit: 'Enviar solicitud',
-                bookingTitle: 'Reserva tu Cita',
-                bookingSub: 'Elige el servicio, selecciona un horario y confirmamos todo por WhatsApp.',
-                bookingName: 'Nombre Completo',
-                bookingEmail: 'Email',
-                bookingPhone: 'Número de WhatsApp',
-                bookingService: 'Selecciona el Servicio',
-                bookingDate: 'Selecciona la Fecha',
-                bookingTime: 'Horarios Disponibles',
-                bookingNotes: 'Peticiones Especiales (opcional)',
-                bookingSubmit: 'Confirmar Reserva',
-                bookingConfirmTitle: '✅ ¡Reserva Solicitada!',
-                bookingConfirmText: 'Confirmaremos tu horario en 2 horas por WhatsApp. Recibirás un recordatorio 4h antes.',
-                adminTitle: '📋 Panel de Juh',
-                adminSub: 'Gestiona citas, aprueba reseñas y bloquea horarios.',
-                adminAddTest: '+ Agregar Prueba',
-                adminLogout: 'Salir',
-                statTotal: 'Total de Citas',
-                statToday: 'Hoy',
-                statPending: 'Pendientes',
-                statConfirmed: 'Confirmadas',
-                adminAppointments: '📅 Próximas Citas',
-                adminNoAppointments: 'Aún no hay citas. Haz clic en "+ Agregar Prueba" para crear una.',
-                adminReviews: '⭐ Reseñas Pendientes',
-                adminNoReviews: 'No hay reseñas pendientes. Se pedirá a las clientas que califiquen 24h después de la cita.',
+                contactSubmit: 'Continuar para Reservar →',
             }
         };
+
+        let currentLang = 'en';
 
         // --- LANGUAGE SWITCH ---
         document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -1493,7 +1093,6 @@
                 const key = el.dataset.key;
                 if (strings[key] !== undefined) {
                     if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
-                        // for placeholders
                         if (el.placeholder && strings[key]) {
                             el.placeholder = strings[key];
                         }
@@ -1502,7 +1101,6 @@
                     }
                 }
             });
-            // Update selects placeholders
             document.querySelectorAll('input[data-key]').forEach(el => {
                 const key = el.dataset.key;
                 if (strings[key] && el.placeholder) {
@@ -1511,244 +1109,8 @@
             });
         }
 
-        // --- PAGE NAVIGATION ---
-        function showPage(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page-' + page).classList.add('active');
-            if (page === 'admin') renderAdmin();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // --- BOOKING ---
-        function selectTime(el) {
-            if (el.classList.contains('booked')) return;
-            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
-            el.classList.add('selected');
-            selectedTime = el.textContent.trim();
-        }
-
-        function updateTimeSlots() {
-            // just a visual update - could filter based on service
-        }
-
-        function handleBooking(e) {
-            e.preventDefault();
-            const name = document.getElementById('bookName').value;
-            const email = document.getElementById('bookEmail').value;
-            const phone = document.getElementById('bookPhone').value;
-            const service = document.getElementById('bookService').value;
-            const date = document.getElementById('bookDate').value;
-            const notes = document.getElementById('bookNotes').value;
-
-            if (!selectedTime) {
-                alert('Please select a time slot.');
-                return;
-            }
-
-            const appointment = {
-                id: Date.now(),
-                client: name,
-                email: email,
-                phone: phone,
-                service: service,
-                date: date,
-                time: selectedTime,
-                notes: notes,
-                status: 'pending',
-                createdAt: new Date().toISOString()
-            };
-
-            appointments.push(appointment);
-
-            document.getElementById('bookingForm').style.display = 'none';
-            document.getElementById('bookingConfirmation').style.display = 'block';
-
-            // Reset for next time
-            selectedTime = null;
-            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
-        }
-
-        function handleQuickBooking(e) {
-            e.preventDefault();
-            const name = document.getElementById('quickName').value;
-            const email = document.getElementById('quickEmail').value;
-            const phone = document.getElementById('quickPhone').value;
-            const service = document.getElementById('quickService').value;
-
-            if (!name || !email || !phone || !service) {
-                alert('Please fill all fields.');
-                return;
-            }
-
-            const appointment = {
-                id: Date.now(),
-                client: name,
-                email: email,
-                phone: phone,
-                service: service,
-                date: new Date().toISOString().split('T')[0],
-                time: 'TBD',
-                notes: 'From quick booking form',
-                status: 'pending',
-                createdAt: new Date().toISOString()
-            };
-
-            appointments.push(appointment);
-
-            alert('✅ Appointment requested! Juh will confirm via WhatsApp.');
-            e.target.reset();
-        }
-
-        // --- ADMIN ---
-        function loadAppointments() {
-            if (appointments.length === 0) {
-                // Add some sample data
-                appointments = [{
-                    id: 1,
-                    client: 'Amanda Silva',
-                    email: 'amanda@email.com',
-                    phone: '+1 (305) 123-4567',
-                    service: 'Gel Nails',
-                    date: '2026-07-26',
-                    time: '10:00 AM',
-                    notes: 'Chrome finish on ring fingers',
-                    status: 'confirmed',
-                    createdAt: '2026-07-24T10:00:00'
-                }, {
-                    id: 2,
-                    client: 'Maria Garcia',
-                    email: 'maria@email.com',
-                    phone: '+1 (786) 234-5678',
-                    service: 'Lash & Brow',
-                    date: '2026-07-27',
-                    time: '2:00 PM',
-                    notes: 'First time lash lifting',
-                    status: 'pending',
-                    createdAt: '2026-07-24T14:30:00'
-                }];
-            }
-            renderAdmin();
-        }
-
-        function renderAdmin() {
-            const list = document.getElementById('appointmentList');
-            if (appointments.length === 0) {
-                list.innerHTML = `<div style="padding:40px;text-align:center;color:#9a8e82;" data-key="adminNoAppointments">No appointments yet. Click "+ Add Test" to create one.</div>`;
-            } else {
-                list.innerHTML = appointments.map(a => `
-                    <div class="appointment-item">
-                        <div>
-                            <div class="client">${a.client}</div>
-                            <div class="service">${a.service}</div>
-                        </div>
-                        <div class="time">${a.date} at ${a.time}</div>
-                        <div><span class="status-badge ${a.status}">${a.status}</span></div>
-                        <div>${a.phone}</div>
-                        <div class="action-btns">
-                            ${a.status === 'pending' ? `<button class="approve" onclick="approveAppointment(${a.id})">✓ Approve</button>` : ''}
-                            <button class="cancel" onclick="cancelAppointment(${a.id})">✕ Cancel</button>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            // Update stats
-            const today = new Date().toISOString().split('T')[0];
-            const todayApps = appointments.filter(a => a.date === today);
-            const pending = appointments.filter(a => a.status === 'pending');
-            const confirmed = appointments.filter(a => a.status === 'confirmed');
-
-            document.getElementById('statTotal').textContent = appointments.length;
-            document.getElementById('statToday').textContent = todayApps.length;
-            document.getElementById('statPending').textContent = pending.length;
-            document.getElementById('statConfirmed').textContent = confirmed.length;
-
-            // Pending reviews (simulated)
-            const reviews = document.getElementById('pendingReviews');
-            if (confirmed.length > 0) {
-                const recent = confirmed[confirmed.length - 1];
-                reviews.innerHTML = `
-                    <div style="padding:16px;background:#faf8f5;border-radius:12px;margin-bottom:8px;">
-                        <strong>${recent.client}</strong> (${recent.service}) — 24h after appointment
-                        <div style="margin-top:8px;display:flex;gap:8px;">
-                            <button class="btn-primary" style="padding:6px 16px;font-size:13px;" onclick="approveReview()">⭐ Approve</button>
-                        </div>
-                    </div>
-                `;
-            } else {
-                reviews.innerHTML = `<p data-key="adminNoReviews">No pending reviews. Clients will be asked to rate 24h after their appointment.</p>`;
-            }
-            updateLanguage();
-        }
-
-        function approveAppointment(id) {
-            const app = appointments.find(a => a.id === id);
-            if (app) {
-                app.status = 'confirmed';
-                renderAdmin();
-            }
-        }
-
-        function cancelAppointment(id) {
-            if (confirm('Cancel this appointment?')) {
-                appointments = appointments.filter(a => a.id !== id);
-                renderAdmin();
-            }
-        }
-
-        function addTestAppointment() {
-            const names = ['Jessica Parker', 'Laura Martinez', 'Ana Costa', 'Rachel Green', 'Monica Souza'];
-            const services = ['Gel Nails', 'Manicure & Pedicure', 'Lash & Brow', 'Waxing & Henna', 'Micropigmentation', 'Nail Art & Chrome'];
-            const times = ['9:00 AM', '10:00 AM', '11:00 AM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM'];
-
-            const randomName = names[Math.floor(Math.random() * names.length)];
-            const randomService = services[Math.floor(Math.random() * services.length)];
-            const randomTime = times[Math.floor(Math.random() * times.length)];
-
-            // date between today and +3 days
-            const date = new Date();
-            date.setDate(date.getDate() + Math.floor(Math.random() * 4));
-            const dateStr = date.toISOString().split('T')[0];
-
-            const app = {
-                id: Date.now(),
-                client: randomName,
-                email: randomName.toLowerCase().replace(' ', '.') + '@email.com',
-                phone: '+1 (305) 555-' + String(Math.floor(Math.random() * 9000) + 1000),
-                service: randomService,
-                date: dateStr,
-                time: randomTime,
-                notes: 'Test appointment',
-                status: Math.random() > 0.5 ? 'pending' : 'confirmed',
-                createdAt: new Date().toISOString()
-            };
-
-            appointments.push(app);
-            renderAdmin();
-        }
-
-        function approveReview() {
-            alert('✅ Review approved and published on the website!');
-        }
-
-        function logoutAdmin() {
-            if (confirm('Logout from admin panel?')) {
-                showPage('home');
-            }
-        }
-
         // --- INIT ---
         document.addEventListener('DOMContentLoaded', function() {
-            // Set default date
-            const dateInput = document.getElementById('bookDate');
-            if (dateInput) {
-                const today = new Date();
-                const tomorrow = new Date(today);
-                tomorrow.setDate(tomorrow.getDate() + 1);
-                dateInput.value = tomorrow.toISOString().split('T')[0];
-            }
-
-            loadAppointments();
             updateLanguage();
         });
     </script>
