@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel | Juliana Callegaris</title>
+<link rel="icon" href="assets/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<style>
+  :root{
+    --marble-light:#F7F1E8; --gold:#B8874A; --gold-dark:#8F6530; --ink:#3A2C1E; --ink-soft:#6E5D4C;
+    --white:#FFFFFF; --shadow:0 10px 30px rgba(58,44,30,.12); --radius:20px;
+    --serif:'Cormorant Garamond',serif; --sans:'Jost',sans-serif;
+    --green:#5C8A5C; --red:#B5564A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:var(--sans); color:var(--ink); background:var(--marble-light); line-height:1.5;}
+  a{color:inherit;}
+  h1,h2{font-family:var(--serif); font-weight:500;}
+  .wrap{max-width:760px; margin:0 auto; padding:24px 18px 70px;}
+
+  /* LOGIN */
+  #loginScreen{
+    min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px;
+  }
+  .login-card{
+    background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); padding:36px 28px;
+    width:100%; max-width:360px; text-align:center;
+  }
+  .login-card img{height:52px; margin-bottom:14px;}
+  .login-card h1{font-size:1.5rem; margin-bottom:6px;}
+  .login-card p{color:var(--ink-soft); font-size:.88rem; margin-bottom:22px;}
+  input{
+    width:100%; padding:13px 15px; border-radius:12px; border:1.5px solid rgba(184,135,74,.3);
+    font-family:var(--sans); font-size:.95rem; margin-bottom:12px;
+  }
+  input:focus{outline:none; border-color:var(--gold);}
+  .btn{
+    width:100%; padding:14px; border-radius:100px; border:none; background:var(--gold); color:#fff;
+    font-family:var(--sans); font-weight:600; font-size:.95rem; cursor:pointer; transition:.2s;
+  }
+  .btn:hover{background:var(--gold-dark);}
+  .btn-outline{background:transparent; border:1.5px solid var(--gold); color:var(--gold-dark);}
+  .error-msg{color:var(--red); font-size:.82rem; margin-top:10px; display:none;}
+
+  /* DASHBOARD */
+  #dashboard{display:none;}
+  header{
+    display:flex; align-items:center; justify-content:space-between; padding:16px 0; margin-bottom:10px;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--serif); font-size:1.1rem;}
+  .brand img{height:30px;}
+  .logout-btn{font-size:.82rem; color:var(--gold-dark); font-weight:500; cursor:pointer; background:none; border:none;}
+
+  .tabs{display:flex; gap:8px; margin-bottom:20px;}
+  .tab-btn{
+    flex:1; padding:10px; border-radius:100px; border:1px solid rgba(184,135,74,.35); background:var(--white);
+    font-size:.85rem; font-weight:500; cursor:pointer;
+  }
+  .tab-btn.active{background:var(--gold); color:#fff; border-color:var(--gold);}
+
+  .day-group{margin-bottom:22px;}
+  .day-title{font-family:var(--serif); font-size:1.2rem; margin-bottom:10px; color:var(--gold-dark);}
+  .appt-card{
+    background:var(--white); border-radius:16px; padding:16px 18px; margin-bottom:10px; box-shadow:var(--shadow);
+  }
+  .appt-top{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;}
+  .appt-name{font-weight:600; font-size:1rem;}
+  .appt-service{font-size:.85rem; color:var(--ink-soft);}
+  .appt-time{font-family:var(--serif); font-size:1.3rem; color:var(--gold-dark); font-weight:600;}
+  .appt-meta{font-size:.82rem; color:var(--ink-soft); margin-bottom:10px;}
+  .appt-meta a{color:var(--gold-dark); font-weight:500;}
+  .status-badge{
+    display:inline-block; font-size:.7rem; font-weight:600; padding:3px 10px; border-radius:100px; margin-bottom:8px;
+  }
+  .status-aguardando_confirmacao{background:#F2E4C8; color:#8F6530;}
+  .status-confirmado{background:#DCEBDC; color:var(--green);}
+  .status-cancelado{background:#F3DCD9; color:var(--red);}
+  .appt-actions{display:flex; gap:8px;}
+  .appt-actions button{
+    flex:1; padding:9px; border-radius:100px; border:1.5px solid; font-size:.8rem; font-weight:600; cursor:pointer; background:none;
+  }
+  .btn-confirm{border-color:var(--green); color:var(--green);}
+  .btn-confirm:hover{background:var(--green); color:#fff;}
+  .btn-cancel{border-color:var(--red); color:var(--red);}
+  .btn-cancel:hover{background:var(--red); color:#fff;}
+
+  .empty-state{text-align:center; color:var(--ink-soft); font-size:.9rem; padding:40px 0;}
+
+  /* BLOCK SLOTS */
+  .card{background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); padding:20px; margin-bottom:16px;}
+  .field-label{font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-dark); font-weight:600; margin-bottom:10px; display:block;}
+  select{width:100%; padding:13px 15px; border-radius:12px; border:1.5px solid rgba(184,135,74,.3); font-family:var(--sans); font-size:.9rem; margin-bottom:12px;}
+  .blocked-item{
+    display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(184,135,74,.15); font-size:.88rem;
+  }
+  .blocked-item button{background:none; border:none; color:var(--red); font-size:.8rem; cursor:pointer; font-weight:600;}
+</style>
+</head>
+<body>
+
+<div id="loginScreen">
+  <div class="login-card">
+    <img src="assets/logo-mark.png" alt="logo">
+    <h1>Painel da Juh</h1>
+    <p>Entre com seu e-mail e senha</p>
+    <input type="email" id="loginEmail" placeholder="E-mail">
+    <input type="password" id="loginPass" placeholder="Senha">
+    <button class="btn" id="loginBtn">Entrar</button>
+    <div class="error-msg" id="loginError">E-mail ou senha incorretos.</div>
+  </div>
+</div>
+
+<div id="dashboard">
+  <div class="wrap">
+    <header>
+      <div class="brand"><img src="assets/logo-mark.png" alt="logo"> Painel</div>
+      <button class="logout-btn" id="logoutBtn">Sair</button>
+    </header>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="agenda">Agenda</button>
+      <button class="tab-btn" data-tab="bloqueios">Bloquear horários</button>
+    </div>
+
+    <div id="tab-agenda">
+      <div id="agendaList"><p class="empty-state">Carregando agendamentos...</p></div>
+    </div>
+
+    <div id="tab-bloqueios" style="display:none;">
+      <div class="card">
+        <span class="field-label">Bloquear um horário específico</span>
+        <input type="date" id="blockDate">
+        <select id="blockTime">
+          <option value="">Escolha o horário</option>
+        </select>
+        <button class="btn" id="blockSlotBtn">Bloquear este horário</button>
+      </div>
+      <div class="card">
+        <span class="field-label">Bloquear o dia inteiro</span>
+        <input type="date" id="blockFullDate">
+        <button class="btn btn-outline" id="blockFullDayBtn">Bloquear o dia todo</button>
+      </div>
+      <div class="card">
+        <span class="field-label">Horários bloqueados (próximos dias)</span>
+        <div id="blockedList"><p class="empty-state">Nenhum bloqueio ativo.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================================================================
+   FIREBASE — projeto "site-juh"
+   ================================================================ */
+const firebaseConfig = {
+  apiKey: "AIzaSyBDXA4XzRHLKRJQ7_gyEyaTKf6-AseVQEY",
+  authDomain: "site-juh.firebaseapp.com",
+  projectId: "site-juh",
+  storageBucket: "site-juh.firebasestorage.app",
+  messagingSenderId: "598651568617",
+  appId: "1:598651568617:web:6f0303ee8bf2c11acc8b78"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+const OPEN_HOUR = 9, CLOSE_HOUR = 18, SLOT_STEP_MIN = 30;
+
+/* ---------- AUTH ---------- */
+document.getElementById('loginBtn').addEventListener('click', ()=>{
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  document.getElementById('loginError').style.display = 'none';
+  auth.signInWithEmailAndPassword(email, pass).catch(err=>{
+    console.error(err);
+    document.getElementById('loginError').style.display = 'block';
+  });
+});
+document.getElementById('logoutBtn').addEventListener('click', ()=> auth.signOut());
+
+auth.onAuthStateChanged(user=>{
+  if(user){
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    loadAppointments();
+    loadBlockedSlots();
+  } else {
+    document.getElementById('loginScreen').style.display = 'flex';
+    document.getElementById('dashboard').style.display = 'none';
+  }
+});
+
+/* ---------- TABS ---------- */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-agenda').style.display = btn.dataset.tab==='agenda' ? 'block' : 'none';
+    document.getElementById('tab-bloqueios').style.display = btn.dataset.tab==='bloqueios' ? 'block' : 'none';
+  });
+});
+
+/* ---------- LOAD APPOINTMENTS ---------- */
+async function loadAppointments(){
+  const listEl = document.getElementById('agendaList');
+  listEl.innerHTML = '<p class="empty-state">Carregando agendamentos...</p>';
+  try{
+    const todayKey = new Date().toISOString().split('T')[0];
+    const snap = await db.collection('appointments')
+      .where('dateKey','>=', todayKey)
+      .orderBy('dateKey','asc')
+      .get();
+
+    if(snap.empty){
+      listEl.innerHTML = '<p class="empty-state">Nenhum agendamento futuro por enquanto.</p>';
+      return;
+    }
+
+    const byDate = {};
+    snap.forEach(doc=>{
+      const b = { id: doc.id, ...doc.data() };
+      if(!byDate[b.dateKey]) byDate[b.dateKey] = [];
+      byDate[b.dateKey].push(b);
+    });
+
+    listEl.innerHTML = '';
+    Object.keys(byDate).sort().forEach(dateKey=>{
+      const items = byDate[dateKey].sort((a,b)=> a.time.localeCompare(b.time));
+      const dateLabel = new Date(dateKey+'T00:00:00').toLocaleDateString('pt-BR', {weekday:'long', day:'numeric', month:'long'});
+      const group = document.createElement('div');
+      group.className = 'day-group';
+      group.innerHTML = `<div class="day-title">${dateLabel}</div>`;
+      items.forEach(b=>{
+        const card = document.createElement('div');
+        card.className = 'appt-card';
+        card.innerHTML = `
+          <span class="status-badge status-${b.status}">${statusLabel(b.status)}</span>
+          <div class="appt-top">
+            <div>
+              <div class="appt-name">${b.clientName}</div>
+              <div class="appt-service">${b.serviceName}</div>
+            </div>
+            <div class="appt-time">${b.time}</div>
+          </div>
+          <div class="appt-meta">
+            💬 <a href="https://wa.me/${b.clientWhatsapp.replace(/\D/g,'')}" target="_blank">${b.clientWhatsapp}</a> ·
+            ✉️ ${b.clientEmail} · $${b.price}
+          </div>
+          <div class="appt-actions">
+            <button class="btn-confirm" data-id="${b.id}" data-action="confirmado">Aprovar</button>
+            <button class="btn-cancel" data-id="${b.id}" data-action="cancelado">Cancelar</button>
+          </div>
+        `;
+        group.appendChild(card);
+      });
+      listEl.appendChild(group);
+    });
+
+    document.querySelectorAll('.appt-actions button').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        btn.disabled = true;
+        try{
+          await db.collection('appointments').doc(btn.dataset.id).update({ status: btn.dataset.action });
+          loadAppointments();
+        } catch(err){
+          console.error(err);
+          alert('Erro ao atualizar. Tenta de novo.');
+          btn.disabled = false;
+        }
+      });
+    });
+
+  } catch(err){
+    console.error(err);
+    listEl.innerHTML = '<p class="empty-state">Erro ao carregar agendamentos. Verifica as regras do Firestore.</p>';
+  }
+}
+
+function statusLabel(status){
+  return { aguardando_confirmacao:'Aguardando confirmação', confirmado:'Confirmado', cancelado:'Cancelado' }[status] || status;
+}
+
+/* ---------- BLOCK SLOTS ---------- */
+function buildTimeOptions(selectEl){
+  selectEl.innerHTML = '<option value="">Escolha o horário</option>';
+  for(let mins = OPEN_HOUR*60; mins < CLOSE_HOUR*60; mins += SLOT_STEP_MIN){
+    const h = Math.floor(mins/60), m = mins%60;
+    const label = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+    const opt = document.createElement('option');
+    opt.value = label; opt.textContent = label;
+    selectEl.appendChild(opt);
+  }
+}
+buildTimeOptions(document.getElementById('blockTime'));
+
+document.getElementById('blockSlotBtn').addEventListener('click', async ()=>{
+  const date = document.getElementById('blockDate').value;
+  const time = document.getElementById('blockTime').value;
+  if(!date || !time){ alert('Escolhe a data e o horário.'); return; }
+  await db.collection('bookedSlots').add({ dateKey: date, time: time, blocked: true });
+  alert('Horário bloqueado!');
+  loadBlockedSlots();
+});
+
+document.getElementById('blockFullDayBtn').addEventListener('click', async ()=>{
+  const date = document.getElementById('blockFullDate').value;
+  if(!date){ alert('Escolhe a data.'); return; }
+  const batch = db.batch();
+  for(let mins = OPEN_HOUR*60; mins < CLOSE_HOUR*60; mins += SLOT_STEP_MIN){
+    const h = Math.floor(mins/60), m = mins%60;
+    const label = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+    const ref = db.collection('bookedSlots').doc();
+    batch.set(ref, { dateKey: date, time: label, blocked: true });
+  }
+  await batch.commit();
+  alert('Dia inteiro bloqueado!');
+  loadBlockedSlots();
+});
+
+async function loadBlockedSlots(){
+  const listEl = document.getElementById('blockedList');
+  try{
+    const todayKey = new Date().toISOString().split('T')[0];
+    const snap = await db.collection('bookedSlots')
+      .where('dateKey','>=', todayKey)
+      .where('blocked','==', true)
+      .orderBy('dateKey','asc')
+      .get();
+
+    if(snap.empty){
+      listEl.innerHTML = '<p class="empty-state">Nenhum bloqueio ativo.</p>';
+      return;
+    }
+    listEl.innerHTML = '';
+    snap.forEach(doc=>{
+      const b = doc.data();
+      const row = document.createElement('div');
+      row.className = 'blocked-item';
+      row.innerHTML = `<span>${b.dateKey} — ${b.time}</span><button data-id="${doc.id}">remover</button>`;
+      row.querySelector('button').addEventListener('click', async ()=>{
+        await db.collection('bookedSlots').doc(doc.id).delete();
+        loadBlockedSlots();
+      });
+      listEl.appendChild(row);
+    });
+  } catch(err){
+    console.error(err);
+    listEl.innerHTML = '<p class="empty-state">Erro ao carregar bloqueios (pode precisar criar um índice — veja o console).</p>';
+  }
+}
+</script>
+</body>
+</html>
