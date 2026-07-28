@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juliana Callegaris | Beauty Studio</title>
+<meta name="description" content="Nail designer, extensão de cílios, henna e depilação em Apopka/Orlando, FL.">
+<link rel="icon" href="assets/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold-1:#F6E7B4;
+    --gold-2:#D9B45C;
+    --gold-3:#B8892E;
+    --gold-4:#8A6512;
+    --ink:#3A3229;
+    --ink-soft:#6E6152;
+    --white:#FFFFFF;
+    --glass: rgba(255,255,255,.58);
+    --glass-strong: rgba(255,255,255,.78);
+    --shadow: 0 15px 40px rgba(80,60,20,.14);
+    --radius: 24px;
+    --serif:'Cormorant Garamond',serif;
+    --sans:'Jost',sans-serif;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+  .bg-parallax{
+    position:fixed; top:0; left:0; width:100%; height:130vh; z-index:-1;
+    background: url('assets/bg-marble.jpg') center top / cover no-repeat;
+    will-change: transform;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px;}
+  h1,h2,h3{font-family:var(--serif); font-weight:500; color:var(--ink);}
+  .gold-text{
+    background: linear-gradient(120deg, var(--gold-4), var(--gold-2) 45%, var(--gold-1) 55%, var(--gold-3));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .eyebrow{
+    font-family:var(--sans); font-size:.72rem; letter-spacing:.28em; text-transform:uppercase;
+    color:var(--gold-4); font-weight:600; margin-bottom:10px; display:block;
+  }
+  .section-title{ font-size:clamp(1.9rem, 5vw, 3rem); letter-spacing:.02em; margin-bottom:14px; }
+  .section-sub{ color:var(--ink-soft); font-weight:300; max-width:560px; margin-bottom:36px; font-size:1.02rem; }
+  section{padding:70px 0;}
+  .glass-panel{
+    background:var(--glass); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(212,175,55,.35); border-radius:var(--radius); box-shadow:var(--shadow);
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px; font-family:var(--sans);
+    font-size:.95rem; letter-spacing:.03em; font-weight:500; padding:15px 32px;
+    border-radius:100px; border:1.5px solid var(--gold-3); cursor:pointer; transition:.25s ease;
+    background:rgba(255,255,255,.4); color:var(--gold-4); min-height:50px;
+  }
+  .btn-solid{background:linear-gradient(120deg, var(--gold-4), var(--gold-2), var(--gold-3)); color:#fff; border-color:transparent;}
+  .btn-solid:hover{filter:brightness(1.08);}
+  .btn:hover{background:rgba(255,255,255,.7);}
+
+  /* ---- LOGO SVG ---- */
+  .logo-mark{ width:40px; height:40px; flex-shrink:0; }
+  .logo-mark-lg{ width:120px; height:120px; }
+  #goldGradDef{ display:none; }
+
+  /* ---------- LANGUAGE SWITCHER ---------- */
+  .lang-switch{
+    position:fixed; top:16px; right:16px; z-index:999;
+    background:rgba(255,255,255,.85); backdrop-filter:blur(6px);
+    border-radius:100px; display:flex; padding:4px; box-shadow:var(--shadow);
+    border:1px solid rgba(212,175,55,.4);
+  }
+  .lang-switch button{
+    border:none; background:none; font-family:var(--sans); font-size:.78rem; font-weight:600;
+    padding:8px 12px; border-radius:100px; cursor:pointer; color:var(--ink-soft); letter-spacing:.03em;
+  }
+  .lang-switch button.active{background:linear-gradient(120deg, var(--gold-4), var(--gold-2)); color:#fff;}
+
+  /* ---------- HEADER / NAV ---------- */
+  header{ position:fixed; top:0; left:0; right:0; z-index:900; padding:16px 0; transition:.3s ease; background:transparent; }
+  header.scrolled{background:rgba(255,255,255,.75); backdrop-filter:blur(12px); box-shadow:0 4px 24px rgba(80,60,20,.10);}
+  header .wrap{display:flex; align-items:center; justify-content:space-between;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--serif); font-size:1.2rem; letter-spacing:.06em;}
+  nav.desktop-nav{display:none;}
+  nav.desktop-nav a{
+    font-size:.85rem; letter-spacing:.04em; margin-left:28px; font-weight:500; color:var(--ink);
+    position:relative; padding-bottom:4px;
+  }
+  nav.desktop-nav a::after{content:'';position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--gold-3); transition:.25s;}
+  nav.desktop-nav a:hover::after{width:100%;}
+  .burger{width:44px; height:44px; border-radius:50%; border:1.5px solid var(--gold-3); background:rgba(255,255,255,.6); display:flex; align-items:center; justify-content:center; cursor:pointer;}
+  .burger span, .burger span::before, .burger span::after{ content:''; display:block; width:18px; height:2px; background:var(--gold-4); position:relative; }
+  .burger span::before{position:absolute; top:-6px;} .burger span::after{position:absolute; top:6px;}
+
+  .mobile-menu{
+    position:fixed; inset:0; background:rgba(255,250,240,.97); backdrop-filter:blur(20px); z-index:950;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px;
+    transform:translateY(-100%); transition:.35s ease;
+  }
+  .mobile-menu.open{transform:translateY(0);}
+  .mobile-menu a{font-family:var(--serif); font-size:1.7rem; color:var(--ink);}
+  .mobile-menu .close-x{position:absolute; top:20px; right:20px; width:44px; height:44px; border-radius:50%; border:1.5px solid var(--gold-3); display:flex; align-items:center; justify-content:center; font-size:1.3rem; color:var(--gold-4); cursor:pointer;}
+
+  /* ---------- HERO ---------- */
+  .hero{ position:relative; min-height:100svh; display:flex; align-items:center; padding-top:70px; }
+  .hero .wrap{display:grid; grid-template-columns:1fr; gap:20px; align-items:center;}
+  .hero-copy{position:relative; z-index:2; text-align:center;}
+  .hero h1{font-size:clamp(2.4rem, 8vw, 4.3rem); line-height:1.05; letter-spacing:.02em; margin-bottom:16px;}
+  .hero p{font-size:1.05rem; color:var(--ink-soft); max-width:440px; margin:0 auto 26px; font-weight:300;}
+  .hero-photo{ position:relative; display:flex; justify-content:center; margin-top:-10px; }
+  .hero-photo img{ max-width:320px; width:78%; filter:drop-shadow(0 30px 40px rgba(80,60,20,.25)); }
+  .hero-badge{
+    position:absolute; bottom:6%; left:50%; transform:translateX(-50%);
+    display:flex; align-items:center; gap:10px; padding:10px 20px; border-radius:100px;
+  }
+  .scroll-cue{ text-align:center; margin-top:10px; font-size:.7rem; letter-spacing:.25em; color:var(--gold-4); opacity:.8; }
+
+  /* ---------- ABOUT ---------- */
+  .about .grid{display:grid; gap:32px; align-items:center; padding:36px 28px;}
+  blockquote{
+    font-family:var(--serif); font-style:italic; font-size:clamp(1.25rem,3vw,1.6rem);
+    color:var(--ink); line-height:1.5; border-left:2px solid var(--gold-3); padding-left:22px; margin:20px 0;
+  }
+  .signature{font-family:var(--serif); color:var(--gold-4); font-size:1.15rem; letter-spacing:.04em;}
+
+  /* ---------- SERVICES ---------- */
+  .svc-tabs{display:flex; gap:10px; overflow-x:auto; padding-bottom:14px; margin-bottom:4px; scrollbar-width:none;}
+  .svc-tabs::-webkit-scrollbar{display:none;}
+  .svc-tab{
+    flex:0 0 auto; padding:10px 20px; border-radius:100px; border:1px solid rgba(184,137,46,.4);
+    font-size:.85rem; font-weight:500; cursor:pointer; background:rgba(255,255,255,.5); white-space:nowrap;
+  }
+  .svc-tab.active{background:linear-gradient(120deg, var(--gold-4), var(--gold-2)); color:#fff; border-color:transparent;}
+  .svc-panel{display:none;} .svc-panel.active{display:block; animation:fade .35s ease;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+  .svc-card{
+    position:relative; background:rgba(255,255,255,.55); border-radius:18px; padding:16px 20px; margin-bottom:10px;
+    display:flex; justify-content:space-between; align-items:baseline; gap:14px; box-shadow:0 4px 16px rgba(80,60,20,.06);
+    cursor:pointer; overflow:hidden; border:1px solid rgba(212,175,55,.18);
+  }
+  .svc-name{font-weight:500; font-size:1rem;}
+  .svc-note{display:block; font-size:.78rem; color:var(--ink-soft); font-weight:300; margin-top:2px;}
+  .svc-price{font-family:var(--serif); font-size:1.2rem; color:var(--gold-4); white-space:nowrap; font-weight:600;}
+  .svc-popup{
+    position:absolute; inset:0; background:linear-gradient(120deg, rgba(138,101,18,.95), rgba(184,137,46,.95));
+    display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:.25s ease;
+  }
+  .svc-card.open .svc-popup{opacity:1; pointer-events:auto;}
+  .svc-popup a{color:#fff; font-weight:600; font-size:.9rem; border:1.5px solid #fff; padding:9px 20px; border-radius:100px;}
+  .svc-deposit-note{
+    margin-top:20px; font-size:.85rem; color:var(--ink-soft); display:flex; gap:10px; align-items:center;
+    background:rgba(212,175,55,.1); padding:14px 18px; border-radius:14px;
+  }
+  .warning-icon{ width:22px; height:22px; flex-shrink:0; }
+
+  /* ---------- GALLERY ---------- */
+  .gal-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+  .gal-item{
+    position:relative; border-radius:20px; overflow:hidden; aspect-ratio:1/1; box-shadow:var(--shadow);
+    cursor:pointer; border:2px solid rgba(255,255,255,.6);
+  }
+  .gal-item img{width:100%; height:100%; object-fit:cover; transition:.4s ease;}
+  .gal-caption{
+    position:absolute; left:0; right:0; bottom:0; padding:14px 12px 10px;
+    background:linear-gradient(0deg, rgba(30,20,5,.75), transparent);
+    color:#fff; font-size:.78rem; font-weight:500; letter-spacing:.02em;
+  }
+  .gal-popup{
+    position:absolute; inset:0; background:linear-gradient(140deg, rgba(138,101,18,.92), rgba(184,137,46,.88));
+    display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:.25s ease;
+  }
+  .gal-item.open .gal-popup, .gal-item:hover .gal-popup{opacity:1; pointer-events:auto;}
+  .gal-popup a{color:#fff; font-weight:600; font-size:.85rem; border:1.5px solid #fff; padding:10px 18px; border-radius:100px; text-align:center;}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .test-scroll{display:flex; gap:16px; overflow-x:auto; padding:6px 2px 20px; scroll-snap-type:x mandatory;}
+  .test-card{ scroll-snap-align:start; flex:0 0 84%; background:rgba(255,255,255,.6); border-radius:18px; padding:24px; box-shadow:var(--shadow); border:1px solid rgba(212,175,55,.2); }
+  .test-stars{color:var(--gold-3); letter-spacing:2px; margin-bottom:10px; font-size:.95rem;}
+  .test-name{font-weight:600; font-size:.92rem; margin-bottom:2px;}
+  .test-badge{font-size:.68rem; color:#3897c9; font-weight:600; display:inline-flex; align-items:center; gap:4px; margin-bottom:10px;}
+  .test-text{font-size:.92rem; color:var(--ink-soft); font-weight:300;}
+
+  /* ---------- POLICY ---------- */
+  .policy-list{padding:8px 8px;}
+  .policy-list details{ border-bottom:1px solid rgba(212,175,55,.25); padding:18px 4px; }
+  .policy-list summary{ font-family:var(--serif); font-size:1.15rem; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; color:var(--ink); }
+  .policy-list summary::-webkit-details-marker{display:none;}
+  .policy-list summary::after{content:'+'; font-size:1.4rem; color:var(--gold-3); transition:.25s;}
+  .policy-list details[open] summary::after{content:'–';}
+  .policy-list p{padding-top:10px; color:var(--ink-soft); font-weight:300; font-size:.95rem; max-width:640px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid; gap:22px;}
+  .contact-card{
+    background:rgba(255,255,255,.55); border:1px solid rgba(212,175,55,.3); border-radius:18px; padding:20px;
+    display:flex; align-items:center; gap:16px; transition:.2s;
+  }
+  .contact-card:hover{background:rgba(255,255,255,.8);}
+  .contact-card img{width:44px; height:44px; flex-shrink:0;}
+  .contact-label{display:block; font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:var(--gold-4); margin-bottom:4px;}
+
+  footer{ text-align:center; padding:40px 0 30px; font-size:.8rem; color:var(--ink-soft); }
+  footer .foot-brand{display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:10px;}
+  footer .foot-brand span{font-family:var(--serif); font-size:1.2rem; letter-spacing:.05em;}
+
+  /* ---------- DESKTOP ---------- */
+  @media(min-width:900px){
+    nav.desktop-nav{display:flex; align-items:center;}
+    .burger{display:none;}
+    section{padding:110px 0;}
+    .hero .wrap{grid-template-columns:1.1fr .9fr; text-align:left;}
+    .hero-copy{text-align:left;}
+    .hero p{margin:0 0 26px;}
+    .hero-photo img{max-width:420px; width:100%;}
+    .hero-badge{left:8%; transform:none;}
+    .about .grid{grid-template-columns:.85fr 1.15fr;}
+    .gal-grid{grid-template-columns:repeat(4,1fr);}
+    .test-card{flex:0 0 32%;}
+    .contact-grid{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-parallax" id="bgParallax"></div>
+
+<div class="lang-switch" role="group" aria-label="Language selector">
+  <button data-lang="pt" class="active">PT</button>
+  <button data-lang="en">EN</button>
+  <button data-lang="es">ES</button>
+</div>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <img src="assets/logo-mark.png" class="logo-mark" alt="Juliana Callegaris logo">
+      Juliana Callegaris
+    </a>
+    <nav class="desktop-nav">
+      <a href="#sobre" data-i18n="nav.about">Sobre</a>
+      <a href="#servicos" data-i18n="nav.services">Serviços</a>
+      <a href="#galeria" data-i18n="nav.gallery">Galeria</a>
+      <a href="#depoimentos" data-i18n="nav.testimonials">Depoimentos</a>
+      <a href="#contato" data-i18n="nav.contact">Contato</a>
+    </nav>
+    <button class="burger" id="burgerBtn" aria-label="menu"><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="close-x" id="closeMenu">&times;</div>
+  <a href="#sobre" data-i18n="nav.about">Sobre</a>
+  <a href="#servicos" data-i18n="nav.services">Serviços</a>
+  <a href="#galeria" data-i18n="nav.gallery">Galeria</a>
+  <a href="#depoimentos" data-i18n="nav.testimonials">Depoimentos</a>
+  <a href="#contato" data-i18n="nav.contact">Contato</a>
+</div>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow" data-i18n="hero.eyebrow">Beauty Studio · Apopka / Orlando, FL</span>
+        <h1 data-i18n="hero.title">Realce sua <span class="gold-text">beleza</span>, com cuidado em cada detalhe</h1>
+        <p data-i18n="hero.subtitle">Nail designer, extensão de cílios, henna e depilação — toque em um trabalho abaixo para agendar o serviço.</p>
+        <div class="scroll-cue" data-i18n="hero.scroll">toque nos trabalhos abaixo para agendar ↓</div>
+      </div>
+      <div class="hero-photo">
+        <img src="assets/hero-juh.png" alt="Juliana Callegaris">
+      </div>
+    </div>
+  </section>
+
+  <section class="about glass-panel" id="sobre" style="margin:0 22px;">
+    <div class="wrap" style="padding:0;">
+      <div class="grid">
+        <img src="assets/logo-mark.png" class="logo-mark-lg" alt="Juliana Callegaris" style="justify-self:center;">
+        <div>
+          <span class="eyebrow" data-i18n="about.eyebrow">Sobre mim</span>
+          <h2 class="section-title" data-i18n="about.title">Cada cliente merece se sentir sua melhor versão</h2>
+          <blockquote data-i18n="about.quote">"Sou uma profissional da beleza e adoro destacar o que há de melhor em cada pessoa. Trabalho com cuidado e dedicação para realçar sua autoestima e deixá-la ainda mais confiante!"</blockquote>
+          <p class="signature">— Juliana Callegaris</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="servicos">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="services.eyebrow">Menu de serviços</span>
+      <h2 class="section-title" data-i18n="services.title">Serviços &amp; valores</h2>
+      <p class="section-sub" data-i18n="services.sub">Preços em dólar (USD). Toque em qualquer serviço para agendar.</p>
+
+      <div class="svc-tabs" id="svcTabs">
+        <button class="svc-tab active" data-tab="unhas" data-i18n="services.tab.nails">Unhas</button>
+        <button class="svc-tab" data-tab="fill" data-i18n="services.tab.fill">Manutenção</button>
+        <button class="svc-tab" data-tab="pedicure" data-i18n="services.tab.pedicure">Manicure/Pedicure</button>
+        <button class="svc-tab" data-tab="cilios" data-i18n="services.tab.lashes">Cílios</button>
+        <button class="svc-tab" data-tab="depilacao" data-i18n="services.tab.waxing">Depilação/Henna/Micro</button>
+      </div>
+
+      <div class="svc-panel active" data-panel="unhas">
+        <div class="svc-card" data-svc="alongamento"><span class="svc-name">Extension / Alongamento<span class="svc-note">Molde F1, Dual Forms, Gel na Tip, Fibra</span></span><span class="svc-price">$120</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="banhogel"><span class="svc-name">Gel Bath / Banho de Gel</span><span class="svc-price">$95</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="softgel"><span class="svc-name">Soft Gel / Gel X</span><span class="svc-price">$80</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="manic_curta"><span class="svc-name">Manicure Estruturada — Curta</span><span class="svc-price">$80</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="manic_media"><span class="svc-name">Manicure Estruturada — Média</span><span class="svc-price">$100</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="manic_longa"><span class="svc-name">Manicure Estruturada — Longa</span><span class="svc-price">$120</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="soakoff"><span class="svc-name">Soak Off / Remoção</span><span class="svc-price">$20</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="encapsulada"><span class="svc-name">Encapsulada (par)</span><span class="svc-price">$30+</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="troca"><span class="svc-name">Troca de formato</span><span class="svc-price">$10</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="nailart"><span class="svc-name">Nail Art / Bling</span><span class="svc-price">$10</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="chrome"><span class="svc-name">Chrome Powder / Pó Cromo</span><span class="svc-price">$15</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="babyboomer"><span class="svc-name">Baby Boomer</span><span class="svc-price">$20</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="francesinha_pe"><span class="svc-name">Francesinha — Pé</span><span class="svc-price">$10</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="francesinha_mao"><span class="svc-name">Francesinha — Mão</span><span class="svc-price">$20</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+      </div>
+
+      <div class="svc-panel" data-panel="fill">
+        <div class="svc-card" data-svc="fill3"><span class="svc-name">Fill 3 semanas</span><span class="svc-price">$85</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="fill4"><span class="svc-name">Fill 4 semanas</span><span class="svc-price">$95</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="fill5"><span class="svc-name">Fill 5 semanas</span><span class="svc-price">$120</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="restauracao"><span class="svc-name">Restauração (cada unha)</span><span class="svc-price">$10</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="remocao_cuticula"><span class="svc-name">Remoção (com cuticulagem)</span><span class="svc-price">$45</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+      </div>
+
+      <div class="svc-panel" data-panel="pedicure">
+        <div class="svc-card" data-svc="spa_manic_comum"><span class="svc-name">Spa Pedicure — Esmalte comum</span><span class="svc-price">$65</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="spa_pedi_gel"><span class="svc-name">Spa Pedicure — Gel</span><span class="svc-price">$75</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="spa_manic"><span class="svc-name">Spa Manicure — Esmalte comum</span><span class="svc-price">$65</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="spa_manic_gel"><span class="svc-name">Spa Manicure — Gel</span><span class="svc-price">$75</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="ext_unha_pe"><span class="svc-name">Extensão unha do pé (cada)</span><span class="svc-price">$10</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="manic_gel"><span class="svc-name">Manicure Gel</span><span class="svc-price">$60</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="pedi_gel"><span class="svc-name">Pedicure Gel</span><span class="svc-price">$65</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="manic_comum"><span class="svc-name">Manicure Comum</span><span class="svc-price">$50</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="pedi_comum"><span class="svc-name">Pedicure Comum</span><span class="svc-price">$55</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="bindagem"><span class="svc-name">Bindagem + Gel</span><span class="svc-price">$75</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+      </div>
+
+      <div class="svc-panel" data-panel="cilios">
+        <div class="svc-card" data-svc="cilios_app"><span class="svc-name">Cílios 3D-4D-5D — Aplicação</span><span class="svc-price">$120</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="cilios_fill"><span class="svc-name">Cílios — Preencher</span><span class="svc-price">$85</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="cilios_1sem"><span class="svc-name">Manutenção 1 semana</span><span class="svc-price">$65</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="cilios_2sem"><span class="svc-name">Manutenção 2 semanas</span><span class="svc-price">$75</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="cilios_3sem"><span class="svc-name">Manutenção 3 semanas</span><span class="svc-price">$85</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="cilios_4sem"><span class="svc-name">Manutenção 4+ semanas</span><span class="svc-price">$120</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="volume_app"><span class="svc-name">Volume Brasileiro — Aplicação</span><span class="svc-price">$100</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="volume_1sem"><span class="svc-name">Volume Brasileiro — 1 semana</span><span class="svc-price">$60</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="volume_2sem"><span class="svc-name">Volume Brasileiro — 2 semanas</span><span class="svc-price">$65</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="volume_3sem"><span class="svc-name">Volume Brasileiro — 3 semanas</span><span class="svc-price">$75</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="volume_4sem"><span class="svc-name">Volume Brasileiro — 4+ semanas</span><span class="svc-price">$100</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="volume_remocao"><span class="svc-name">Volume Brasileiro — Remoção</span><span class="svc-price">$30</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+      </div>
+
+      <div class="svc-panel" data-panel="depilacao">
+        <div class="svc-card" data-svc="combo_facial"><span class="svc-name">Combo Facial</span><span class="svc-price">$40</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="sobrancelha"><span class="svc-name">Sobrancelha</span><span class="svc-price">$30</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="buco"><span class="svc-name">Buço</span><span class="svc-price">$15</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="queixo"><span class="svc-name">Queixo</span><span class="svc-price">$20</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="nariz"><span class="svc-name">Nariz</span><span class="svc-price">$20</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="axilas"><span class="svc-name">Axilas</span><span class="svc-price">$25</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="henna"><span class="svc-name">Henna (tingimento + depilação)</span><span class="svc-price">$25</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="microblading"><span class="svc-name">Microblading (Nano Blading)</span><span class="svc-price">$399</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+        <div class="svc-card" data-svc="micro_retoque"><span class="svc-name">Microblading — Retoque 1 mês</span><span class="svc-price">$99,99</span><div class="svc-popup"><a href="agendar.html" data-i18n="services.book">Agendar este serviço</a></div></div>
+      </div>
+
+      <div class="svc-deposit-note"><img src="assets/icon-warning.png" class="warning-icon" alt="Aviso"> <span data-i18n="services.deposit">Agendamento confirmado após depósito de 50% do valor do serviço.</span></div>
+    </div>
+  </section>
+
+  <section class="gallery" id="galeria">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="gallery.eyebrow">Portfólio</span>
+      <h2 class="section-title" data-i18n="gallery.title">Trabalhos recentes</h2>
+      <p class="section-sub" data-i18n="gallery.sub">Toque em um trabalho para agendar o mesmo serviço.</p>
+      <div class="gal-grid" id="galGrid"></div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="depoimentos">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="test.eyebrow">Depoimentos</span>
+      <h2 class="section-title" data-i18n="test.title">O que as clientes falam</h2>
+      <div class="test-scroll" id="testScroll"></div>
+    </div>
+  </section>
+
+  <section class="policy glass-panel" id="politica" style="margin:0 22px;">
+    <div class="wrap" style="padding:36px 12px;">
+      <span class="eyebrow" data-i18n="policy.eyebrow">Boa leitura antes de agendar</span>
+      <h2 class="section-title" data-i18n="policy.title">Política de agendamento</h2>
+      <div class="policy-list" id="policyList"></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contato">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="contact.eyebrow">Vamos conversar</span>
+      <h2 class="section-title" data-i18n="contact.title">Contato &amp; localização</h2>
+      <p class="section-sub" data-i18n="contact.sub">Apopka / Orlando, FL — endereço exato enviado após confirmação do agendamento.</p>
+      <div class="contact-grid">
+        <a class="contact-card" href="https://wa.me/19546956445" target="_blank">
+          <img src="assets/icon-whatsapp.png" alt="WhatsApp">
+          <div><span class="contact-label">WhatsApp</span><span>+1 (954) 695-6445</span></div>
+        </a>
+        <a class="contact-card" href="https://www.instagram.com/beautybyjucallega" target="_blank">
+          <img src="assets/icon-instagram.png" alt="Instagram">
+          <div><span class="contact-label">Instagram</span><span>@beautybyjucallega</span></div>
+        </a>
+        <a class="contact-card" href="https://www.facebook.com/p/Juliana-Callegaris-Beauty-Studio-61579021635137/" target="_blank">
+          <img src="assets/icon-facebook.png" alt="Facebook">
+          <div><span class="contact-label">Facebook</span><span>Juliana Callegaris Beauty Studio</span></div>
+        </a>
+        <a class="contact-card" href="mailto:Beautybyjucallega@gmail.com">
+          <img src="assets/icon-email.png" alt="E-mail">
+          <div><span class="contact-label">E-mail</span><span>Beautybyjucallega@gmail.com</span></div>
+        </a>
+      </div>
+      <div style="margin-top:36px;">
+        <a href="agendar.html" class="btn btn-solid" data-i18n="contact.cta">Agendar horário online</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">
+      <img src="assets/logo-mark.png" class="logo-mark" alt="Juliana Callegaris logo">
+      <span>Juliana Callegaris</span>
+    </div>
+    <div data-i18n="footer.tagline">Beauty Studio · Apopka / Orlando, FL</div>
+    <div style="margin-top:10px; opacity:.7;">© <span id="year"></span> — feito com carinho</div>
+  </div>
+</footer>
+
+<script>
+/* ============ WORK / GALLERY DATA ============ */
+const worksData = [
+  { img:'assets/work-1.jpg', svc:'nailart', pt:'Manicure Estruturada + Nail Art', en:'Structured Manicure + Nail Art', es:'Manicura Estructurada + Nail Art' },
+  { img:'assets/work-2.jpg', svc:'alongamento', pt:'Alongamento XXL com Desenhos e Cat Eye', en:'XXL Acrylic Set with Designs & Cat Eye', es:'Set Acrílico XXL con Diseños y Cat Eye' },
+  { img:'assets/work-3.jpg', svc:'softgel', pt:'Alongamento em Gel (Clean)', en:'Gel Extensions (Clean)', es:'Extensión en Gel (Clean)' },
+  { img:'assets/work-4.jpg', svc:'francesinha_mao', pt:'Gel X + Francesinha', en:'Gel X + French Nail', es:'Gel X + Uña Francesa' },
+];
+
+function renderGallery(lang){
+  const el = document.getElementById('galGrid');
+  el.innerHTML = worksData.map(w => `
+    <div class="gal-item" data-svc="${w.svc}">
+      <img src="${w.img}" alt="${w[lang]}" loading="lazy">
+      <div class="gal-caption">${w[lang]}</div>
+      <div class="gal-popup"><a href="agendar.html">${ {pt:'Agendar este serviço', en:'Book this service', es:'Reservar este servicio'}[lang] }</a></div>
+    </div>
+  `).join('');
+  attachGalleryTapHandlers();
+  wireBookingLinks();
+}
+
+function attachGalleryTapHandlers(){
+  document.querySelectorAll('.gal-item').forEach(item=>{
+    item.addEventListener('click', (e)=>{
+      if(e.target.tagName === 'A') return; // let the link work normally
+      document.querySelectorAll('.gal-item').forEach(o=>{ if(o!==item) o.classList.remove('open'); });
+      item.classList.toggle('open');
+    });
+  });
+}
+
+/* Preenche os links de agendamento com o serviço específico de cada card/foto */
+function wireBookingLinks(){
+  document.querySelectorAll('.svc-card[data-svc]').forEach(card=>{
+    const link = card.querySelector('.svc-popup a');
+    if(link) link.href = `agendar.html?service=${encodeURIComponent(card.dataset.svc)}`;
+  });
+  document.querySelectorAll('.gal-item[data-svc]').forEach(item=>{
+    const link = item.querySelector('.gal-popup a');
+    if(link) link.href = `agendar.html?service=${encodeURIComponent(item.dataset.svc)}`;
+  });
+}
+
+/* Tap-to-open popup on service cards (mobile-friendly; desktop can also hover via CSS if desired) */
+document.querySelectorAll('.svc-card').forEach(card=>{
+  card.addEventListener('click', (e)=>{
+    if(e.target.tagName === 'A') return;
+    document.querySelectorAll('.svc-card').forEach(o=>{ if(o!==card) o.classList.remove('open'); });
+    card.classList.toggle('open');
+  });
+});
+
+/* ============ I18N ============ */
+const i18n = {
+  pt: {
+    "nav.about":"Sobre","nav.services":"Serviços","nav.gallery":"Galeria","nav.testimonials":"Depoimentos","nav.contact":"Contato",
+    "hero.eyebrow":"Beauty Studio · Apopka / Orlando, FL",
+    "hero.title":'Realce sua <span class="gold-text">beleza</span>, com cuidado em cada detalhe',
+    "hero.subtitle":"Nail designer, extensão de cílios, henna e depilação — toque em um trabalho abaixo para agendar o serviço.",
+    "hero.scroll":"toque nos trabalhos abaixo para agendar ↓",
+    "about.eyebrow":"Sobre mim","about.title":"Cada cliente merece se sentir sua melhor versão",
+    "about.quote":"“Sou uma profissional da beleza e adoro destacar o que há de melhor em cada pessoa. Trabalho com cuidado e dedicação para realçar sua autoestima e deixá-la ainda mais confiante!”",
+    "services.eyebrow":"Menu de serviços","services.title":"Serviços &amp; valores",
+    "services.sub":"Preços em dólar (USD). Toque em qualquer serviço para agendar.",
+    "services.tab.nails":"Unhas","services.tab.fill":"Manutenção","services.tab.pedicure":"Manicure/Pedicure","services.tab.lashes":"Cílios","services.tab.waxing":"Depilação/Henna/Micro",
+    "services.deposit":"Agendamento confirmado após depósito de 50% do valor do serviço.",
+    "services.book":"Agendar este serviço",
+    "gallery.eyebrow":"Portfólio","gallery.title":"Trabalhos recentes","gallery.sub":"Toque em um trabalho para agendar o mesmo serviço.",
+    "test.eyebrow":"Depoimentos","test.title":"O que as clientes falam",
+    "policy.eyebrow":"Boa leitura antes de agendar","policy.title":"Política de agendamento",
+    "contact.eyebrow":"Vamos conversar","contact.title":"Contato &amp; localização",
+    "contact.sub":"Apopka / Orlando, FL — endereço exato enviado após confirmação do agendamento.",
+    "contact.cta":"Agendar horário online",
+    "footer.tagline":"Beauty Studio · Apopka / Orlando, FL"
+  },
+  en: {
+    "nav.about":"About","nav.services":"Services","nav.gallery":"Gallery","nav.testimonials":"Reviews","nav.contact":"Contact",
+    "hero.eyebrow":"Beauty Studio · Apopka / Orlando, FL",
+    "hero.title":'Enhance your <span class="gold-text">beauty</span>, with care in every detail',
+    "hero.subtitle":"Nail design, lash extensions, henna and waxing — tap a work below to book that service.",
+    "hero.scroll":"tap the work below to book ↓",
+    "about.eyebrow":"About me","about.title":"Every client deserves to feel her best self",
+    "about.quote":"“I'm a beauty professional and I love highlighting the best in each person. I work with care and dedication to enhance your self-esteem and make you even more confident!”",
+    "services.eyebrow":"Service menu","services.title":"Services &amp; pricing",
+    "services.sub":"Prices in USD. Tap any service to book it.",
+    "services.tab.nails":"Nails","services.tab.fill":"Fill / Maintenance","services.tab.pedicure":"Manicure/Pedicure","services.tab.lashes":"Lashes","services.tab.waxing":"Waxing/Henna/Micro",
+    "services.deposit":"Appointment confirmed after a 50% deposit of the service value.",
+    "services.book":"Book this service",
+    "gallery.eyebrow":"Portfolio","gallery.title":"Recent work","gallery.sub":"Tap a piece of work to book the same service.",
+    "test.eyebrow":"Testimonials","test.title":"What clients are saying",
+    "policy.eyebrow":"Please read before booking","policy.title":"Scheduling policy",
+    "contact.eyebrow":"Let's talk","contact.title":"Contact &amp; location",
+    "contact.sub":"Apopka / Orlando, FL — exact address sent after appointment confirmation.",
+    "contact.cta":"Book your appointment online",
+    "footer.tagline":"Beauty Studio · Apopka / Orlando, FL"
+  },
+  es: {
+    "nav.about":"Sobre mí","nav.services":"Servicios","nav.gallery":"Galería","nav.testimonials":"Opiniones","nav.contact":"Contacto",
+    "hero.eyebrow":"Beauty Studio · Apopka / Orlando, FL",
+    "hero.title":'Realza tu <span class="gold-text">belleza</span>, con cuidado en cada detalle',
+    "hero.subtitle":"Diseño de uñas, extensión de pestañas, henna y depilación — toca un trabajo abajo para reservar ese servicio.",
+    "hero.scroll":"toca los trabajos abajo para reservar ↓",
+    "about.eyebrow":"Sobre mí","about.title":"Cada clienta merece sentirse su mejor versión",
+    "about.quote":"“Soy profesional de la belleza y me encanta destacar lo mejor de cada persona. Trabajo con cuidado y dedicación para realzar tu autoestima y dejarte aún más segura de ti misma.”",
+    "services.eyebrow":"Menú de servicios","services.title":"Servicios y precios",
+    "services.sub":"Precios en dólares (USD). Toca cualquier servicio para reservarlo.",
+    "services.tab.nails":"Uñas","services.tab.fill":"Mantenimiento","services.tab.pedicure":"Manicura/Pedicura","services.tab.lashes":"Pestañas","services.tab.waxing":"Depilación/Henna/Micro",
+    "services.deposit":"La cita se confirma tras un depósito del 50% del valor del servicio.",
+    "services.book":"Reservar este servicio",
+    "gallery.eyebrow":"Portafolio","gallery.title":"Trabajos recientes","gallery.sub":"Toca un trabajo para reservar el mismo servicio.",
+    "test.eyebrow":"Opiniones","test.title":"Lo que dicen las clientas",
+    "policy.eyebrow":"Léelo antes de reservar","policy.title":"Política de citas",
+    "contact.eyebrow":"Hablemos","contact.title":"Contacto y ubicación",
+    "contact.sub":"Apopka / Orlando, FL — dirección exacta enviada tras confirmar la cita.",
+    "contact.cta":"Reservar tu cita en línea",
+    "footer.tagline":"Beauty Studio · Apopka / Orlando, FL"
+  }
+};
+
+const policyData = {
+  pt: [
+    ["I. Cancelamentos e Remarcações","Cancelamentos ou remarcações devem ser feitos com no mínimo 48 horas de antecedência. Caso contrário, o depósito não será reembolsado."],
+    ["II. Atrasos","Atrasos superiores a 15 minutos comprometem a qualidade do nosso trabalho e o atendimento das próximas clientes. Caso o atraso ultrapasse esse limite, não poderemos realizar o atendimento, e o depósito não será reembolsado."],
+    ["III. Política de Depósito","O depósito permite uma remarcação dentro do mesmo mês. Para novas remarcações ou mudança de mês, será necessário um novo depósito. Clientes recorrentes têm a vantagem de remarcar sem novo depósito, mas caso as regras não sejam cumpridas, será cobrada taxa de 50% do valor do serviço perdido."],
+    ["IV. Manutenções de outros profissionais","Aplicações de outra profissional serão avaliadas. Se não for possível manter, será cobrado soak off para remoção e novo procedimento."],
+    ["V. Acompanhantes, crianças e animais","Por segurança, não é permitido trazer acompanhantes, crianças ou animais. Em casos excepcionais, consulte antes."],
+    ["VI. Garantia","Oferecemos garantia de 3 dias para serviços de alongamento e gel, cobrindo possíveis falhas técnicas. Danos causados por mau uso não estão incluídos."],
+    ["VII. Remarcações frequentes","Remarcações frequentes podem resultar na perda de prioridade na agenda."],
+    ["VIII. Durabilidade","Para manter a durabilidade dos serviços, siga as orientações de cuidados fornecidas ao final do atendimento."]
+  ],
+  en: [
+    ["I. Cancellations and Rescheduling","Cancellations and rescheduling must be made at least 48 hours in advance. Otherwise, the deposit will not be refunded."],
+    ["II. Delays","Delays exceeding 15 minutes compromise the quality of our work and the service provided to future clients. If the delay exceeds this limit, we will not be able to provide the service, and the deposit will not be refunded."],
+    ["III. Deposit Policy","The deposit allows one reschedule within the same month. For new reschedules or month changes, a new deposit will be required. Recurring clients can reschedule without a new deposit, but if the rules are not followed, a fee of 50% of the missed service will be charged."],
+    ["IV. Maintenance of other professionals","Applications from another professional will be evaluated. If it is not possible to maintain the application, a soak-off fee will be charged for removal and a new procedure."],
+    ["V. Companions, children and animals","For safety reasons, guests, children, or animals are not permitted. In exceptional cases, please consult beforehand."],
+    ["VI. Guarantee","We offer a 3-day warranty on extension and gel services, covering possible technical defects. Damage caused by misuse is not covered."],
+    ["VII. Frequent rebookings","Frequent rescheduling can result in loss of priority in the schedule."],
+    ["VIII. Durability","To maintain the durability of the services, follow the care instructions provided at the end of the service."]
+  ],
+  es: [
+    ["I. Cancelaciones y reprogramaciones","Las cancelaciones o reprogramaciones deben hacerse con al menos 48 horas de anticipación. De lo contrario, el depósito no será reembolsado."],
+    ["II. Retrasos","Retrasos superiores a 15 minutos comprometen la calidad de nuestro trabajo y la atención de las próximas clientas. Si el retraso supera este límite, no podremos realizar el servicio y el depósito no será reembolsado."],
+    ["III. Política de depósito","El depósito permite una reprogramación dentro del mismo mes. Para nuevas reprogramaciones o cambio de mes, se requerirá un nuevo depósito. Las clientas recurrentes pueden reprogramar sin nuevo depósito, pero si no se cumplen las reglas, se cobrará una tarifa del 50% del servicio perdido."],
+    ["IV. Mantenimiento de otras profesionales","Las aplicaciones de otra profesional serán evaluadas. Si no es posible mantenerlas, se cobrará un soak-off para la remoción y un nuevo procedimiento."],
+    ["V. Acompañantes, niños y animales","Por seguridad, no se permite traer acompañantes, niños o animales. En casos excepcionales, consulte previamente."],
+    ["VI. Garantía","Ofrecemos garantía de 3 días para servicios de extensión y gel, cubriendo posibles defectos técnicos. Los daños causados por mal uso no están cubiertos."],
+    ["VII. Reprogramaciones frecuentes","Las reprogramaciones frecuentes pueden resultar en la pérdida de prioridad en la agenda."],
+    ["VIII. Durabilidad","Para mantener la durabilidad de los servicios, siga las instrucciones de cuidado proporcionadas al final de la cita."]
+  ]
+};
+
+const testimonialsData = [
+  {name:"Rosangela", stars:5, pt:"Maravilhosa! Super recomendo! Faço unha com ela a anos e não troco ela por nada...", en:"Wonderful! Highly recommend! I've been doing my nails with her for years and wouldn't trade her for anything.", es:"¡Maravillosa! La recomiendo mucho. Hace años que me hago las uñas con ella y no la cambio por nada."},
+  {name:"Tati Magnago", stars:5, pt:"Maravilhosa!!! Que trabalho impecável, não largo mais!", en:"Wonderful!!! Such flawless work, I'm never leaving!", es:"¡Maravillosa! Un trabajo impecable, ¡no la dejo más!"},
+  {name:"Izabela da Silva", stars:5, pt:"Passando aqui para te agradecer pois minhas unhas depois de duas semanas estão com esmaltação perfeita, a cutícula continua linda. Obrigado, seu trabalho é maravilhoso. Gratidão", en:"Just stopping by to thank you — after two weeks my polish still looks perfect and my cuticles look great. Your work is wonderful. Grateful!", es:"Pasando para agradecerte, después de dos semanas mis uñas siguen perfectas y mis cutículas hermosas. Tu trabajo es maravilloso. ¡Gracias!"},
+  {name:"Larissa Silveira", stars:5, pt:"Amei Ju! Vc é maravilhosa. Ficou lindo demais", en:"Loved it, Ju! You're wonderful. It turned out beautiful!", es:"¡Me encantó, Ju! Eres maravillosa. Quedó hermosísimo."},
+  {name:"Claimani", stars:5, pt:"Quero te parabenizar mais uma vez pelo seu trabalho. Você tem mãos de fada! Estou simplesmente apaixonada pelas minhas unhas, ficaram perfeitas! O formato, o acabamento, o brilho, tudo impecável! Como sempre, você capricha e coloca amor em cada detalhe.", en:"I want to congratulate you again on your work. You have fairy hands! I'm simply in love with my nails, they turned out perfect! The shape, finish, shine — everything flawless! As always, you put love into every detail.", es:"Quiero felicitarte de nuevo por tu trabajo. ¡Tienes manos de hada! Estoy enamorada de mis uñas, ¡quedaron perfectas! La forma, el acabado, el brillo, todo impecable. Como siempre, pones amor en cada detalle."},
+  {name:"Ana Paula Dantica", stars:5, pt:"Just the best one!!", en:"Just the best one!!", es:"¡Simplemente la mejor!"},
+  {name:"Leticia Dejesus", stars:5, pt:"Absolutely the best!!! South Florida misses you! Lucky ladies of Apopka, highly recommended, amazing beautiful detailed work.", en:"Absolutely the best!!! South Florida misses you! Lucky ladies of Apopka, highly recommended, amazing beautiful detailed work.", es:"¡Absolutamente la mejor! Sur de Florida te extraña. Las chicas de Apopka tienen suerte, muy recomendada, trabajo hermoso y detallado."},
+  {name:"Angela", stars:5, pt:"Desde que me mudei para a Carolina do Norte, não encontrei ninguém que faça unhas como você, Juliana! Sempre perfeito, eu sinto sua falta e do seu talento!", en:"Ever since I moved to NC, I have not been able to find anyone who does nails like you, Juliana! Every single time did my nails and eyebrows, it always came out PERFECT! I miss you and your talent!", es:"Desde que me mudé a Carolina del Norte no he encontrado a nadie que haga las uñas como tú, Juliana. ¡Siempre perfecto! Extraño tu talento."},
+  {name:"Ana A", stars:5, pt:"Ms. Juliana é muito gentil e profissional, e ela deixa minhas sobrancelhas fantásticas. Seu salão em casa é limpo e confortável.", en:"Ms. Juliana is very nice and professional, and she always makes my eyebrows look fantastic! Her home salon is clean and comfortable.", es:"La Sra. Juliana es muy amable y profesional, y siempre deja mis cejas fantásticas. Su salón en casa es limpio y cómodo."},
+  {name:"Claimani", stars:5, pt:"Great professional, I love her work. I've been getting my pedicures done with her for 15 years.", en:"Great professional, I love her work. I've been getting my pedicures done with her for 15 years.", es:"Excelente profesional, amo su trabajo. Llevo 15 años haciéndome las pedicuras con ella."}
+];
+
+function renderTestimonials(lang){
+  const el = document.getElementById('testScroll');
+  el.innerHTML = testimonialsData.map(t => `
+    <div class="test-card">
+      <div class="test-stars">${'★'.repeat(t.stars)}</div>
+      <div class="test-name">${t.name}</div>
+      <div class="test-badge">✔ Verified Booksy user</div>
+      <div class="test-text">${t[lang] || t.pt}</div>
+    </div>
+  `).join('');
+}
+
+function renderPolicy(lang){
+  const el = document.getElementById('policyList');
+  const data = policyData[lang] || policyData.pt;
+  el.innerHTML = data.map((item,idx) => `
+    <details ${idx===0 ? 'open' : ''}>
+      <summary>${item[0]}</summary>
+      <p>${item[1]}</p>
+    </details>
+  `).join('');
+}
+
+function applyLang(lang){
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+  const dict = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(node=>{
+    const key = node.getAttribute('data-i18n');
+    if(dict[key]) node.innerHTML = dict[key];
+  });
+  document.querySelectorAll('.lang-switch button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  document.querySelectorAll('.svc-popup a').forEach(a=> a.textContent = dict['services.book']);
+  renderGallery(lang);
+  renderTestimonials(lang);
+  renderPolicy(lang);
+  localStorage.setItem('jc_lang', lang);
+}
+
+document.querySelectorAll('.lang-switch button').forEach(btn=>{
+  btn.addEventListener('click', ()=> applyLang(btn.dataset.lang));
+});
+
+const savedLang = localStorage.getItem('jc_lang') || 'pt';
+applyLang(savedLang);
+
+/* ============ PARALLAX BACKGROUND ============ */
+const bgParallax = document.getElementById('bgParallax');
+let ticking = false;
+function updateParallax(){
+  const y = window.scrollY * 0.25; // fundo se move a 25% da velocidade do scroll
+  bgParallax.style.transform = `translateY(${y}px)`;
+  ticking = false;
+}
+window.addEventListener('scroll', ()=>{
+  if(!ticking){
+    requestAnimationFrame(updateParallax);
+    ticking = true;
+  }
+}, { passive:true });
+
+/* ============ NAV / MENU ============ */
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', ()=>{ header.classList.toggle('scrolled', window.scrollY > 40); });
+const burgerBtn = document.getElementById('burgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+burgerBtn.addEventListener('click', ()=> mobileMenu.classList.add('open'));
+document.getElementById('closeMenu').addEventListener('click', ()=> mobileMenu.classList.remove('open'));
+mobileMenu.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> mobileMenu.classList.remove('open')));
+
+/* ============ SERVICE TABS ============ */
+document.querySelectorAll('.svc-tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.svc-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.svc-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelector(`.svc-panel[data-panel="${tab.dataset.tab}"]`).classList.add('active');
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
