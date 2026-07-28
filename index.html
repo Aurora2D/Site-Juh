@@ -666,7 +666,7 @@ const bgParallax = document.getElementById('bgParallax');
 let ticking = false;
 function updateParallax(){
   const y = window.scrollY * 0.25; // fundo se move a 25% da velocidade do scroll
-  bgParallax.style.transform = `translateY(${y}px)`;
+  bgParallax.style.transform = `translateY(-${y}px)`;
   ticking = false;
 }
 window.addEventListener('scroll', ()=>{
